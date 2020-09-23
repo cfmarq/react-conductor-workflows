@@ -27,6 +27,17 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FlowChartWithState = void 0;
 var React = require("react");
@@ -35,10 +46,49 @@ var mapValues_1 = require("./container/utils/mapValues");
 var _1 = require("./");
 var actions_1 = require("./container/actions");
 var element_1 = require("./element");
+var _2 = require("./");
+var utils_1 = require("./utils");
 var ModelBox = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: rgba(0,0,0,0.8);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: rgba(0,0,0,0.8);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"])));
 var ModelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  position: relative;\n  width: 50%;\n  background: #fff;\n  margin: 10% auto;\n  border-radius: 10px;\n  padding: 0.5rem;\n"], ["\n  position: relative;\n  width: 50%;\n  background: #fff;\n  margin: 10% auto;\n  border-radius: 10px;\n  padding: 0.5rem;\n"])));
 var ButtonBox = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  cursor: pointer;\n"])));
 var InputBox = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n\n  & label {\n    width: 20%;\n  }\n\n  & input {\n    width: 100%;\n    height: 30px;\n    padding-left: 0.5rem;\n  }\n"], ["\n  font-size: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n\n  & label {\n    width: 20%;\n  }\n\n  & input {\n    width: 100%;\n    height: 30px;\n    padding-left: 0.5rem;\n  }\n"])));
+var Input = styled_components_1.default.input(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 10px;\n  border: 1px solid cornflowerblue;\n  width: 100%;\n"], ["\n  padding: 10px;\n  border: 1px solid cornflowerblue;\n  width: 100%;\n"])));
+var Label = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: absolute;\n  width: 120px;\n"], ["\n  position: absolute;\n  width: 120px;\n"])));
+var LabelContent = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: cornflowerblue;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: cornflowerblue;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
+var PortDefaultOuter = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  width: 20px;\n  height: 20px;\n  border-radius: 20px;\n  background: cornflowerblue;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: cornflowerblue;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 20px;\n  height: 20px;\n  border-radius: 20px;\n  background: cornflowerblue;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: cornflowerblue;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
+var ProcessQueue = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SimpleTask = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var ProcessPoint = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var StartPoint = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
+var EndPoint = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
+var NodeCustom = React.forwardRef(function (_a, ref) {
+    var node = _a.node, children = _a.children, otherProps = __rest(_a, ["node", "children"]);
+    switch (node.type) {
+        case "start":
+            return (React.createElement(StartPoint, __assign({ ref: ref }, otherProps), children));
+        case "end":
+            return (React.createElement(EndPoint, __assign({ ref: ref }, otherProps), children));
+        case "simple-task":
+            return (React.createElement(SimpleTask, __assign({ ref: ref }, otherProps), children));
+        case "process-queue":
+            return (React.createElement(ProcessQueue, __assign({ ref: ref }, otherProps), children));
+        case "process-point":
+            return (React.createElement(ProcessPoint, __assign({ ref: ref }, otherProps), children));
+        default:
+            return (React.createElement(SimpleTask, __assign({ ref: ref }, otherProps), children));
+    }
+});
+var PortCustom = function (props) {
+    return React.createElement(PortDefaultOuter, null);
+};
+var LinkCustom = function (props) {
+    // console.log("----props---- ", props)
+    var startPos = props.startPos, endPos = props.endPos, link = props.link, onLabelDoubleClick = props.onLabelDoubleClick;
+    var _a = utils_1.generateLabelPosition(startPos, endPos), centerX = _a.centerX, centerY = _a.centerY;
+    return (React.createElement(React.Fragment, null,
+        React.createElement(_2.LinkDefault, __assign({}, props)),
+        React.createElement(Label, { style: { left: centerX, top: centerY }, onDoubleClick: function () { onLabelDoubleClick({ linkId: link.id }); } }, props.link.properties && props.link.properties.label && (React.createElement(LabelContent, null, props.link.properties && props.link.properties.label)))));
+};
 var timer = null;
 /**
  * Flow Chart With State
@@ -196,13 +246,13 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     React.createElement("div", { className: "InputBox" },
                         React.createElement(InputBox, null,
                             React.createElement("label", null, "Name:"),
-                            React.createElement(element_1.Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
+                            React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
                         React.createElement(InputBox, null,
                             React.createElement("label", null, "Id:"),
-                            React.createElement(element_1.Input, { onChange: _this.handleDescriptionInput, value: _this.state.nodeId, type: "text" })),
+                            React.createElement(Input, { onChange: _this.handleDescriptionInput, value: _this.state.nodeId, type: "text" })),
                         React.createElement(InputBox, null,
                             React.createElement("label", null, "Task Reference Name:"),
-                            React.createElement(element_1.Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
+                            React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
                         React.createElement(InputBox, null,
                             React.createElement("label", null, "Type:"),
                             React.createElement(element_1.Select, { optionList: nodeTypeOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : nodeTypeOptions[0].rGuid, onChange: _this.handleNodeTypeChange }))),
@@ -219,7 +269,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     React.createElement("div", { className: "InputBox" },
                         React.createElement(InputBox, null,
                             React.createElement("label", null, "Name:"),
-                            React.createElement(element_1.Input, { onChange: _this.handleLinkDescriptionInput, value: _this.state.linkLabel, type: "text" }))),
+                            React.createElement(Input, { onChange: _this.handleLinkDescriptionInput, value: _this.state.linkLabel, type: "text" }))),
                     React.createElement(ButtonBox, null,
                         React.createElement(element_1.Button, { onClick: _this.setLinkInfo, type: "primary" }, "Confirm"),
                         React.createElement(element_1.Button, { onClick: _this.hideModel, type: "cancel" }, "Cancel")))));
@@ -302,7 +352,12 @@ var FlowChartWithState = /** @class */ (function (_super) {
         }
     };
     FlowChartWithState.prototype.render = function () {
-        var _a = this.props, Components = _a.Components, config = _a.config;
+        var config = this.props.config;
+        var Components = {
+            Port: PortCustom,
+            Node: NodeCustom,
+            Link: LinkCustom
+        };
         // console.log("this state: ", this.state)
         return (React.createElement(React.Fragment, null,
             this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel() : "",
@@ -313,5 +368,5 @@ var FlowChartWithState = /** @class */ (function (_super) {
     return FlowChartWithState;
 }(React.Component));
 exports.FlowChartWithState = FlowChartWithState;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13;
 //# sourceMappingURL=FlowChartWithState.js.map

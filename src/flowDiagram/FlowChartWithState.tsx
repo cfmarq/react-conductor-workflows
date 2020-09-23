@@ -8,7 +8,11 @@ import {
   onCanvasClick, onDeleteKey, onNodeClick,
   onNodeSizeChange, onPortPositionChange, onCanvasDrop
 } from './container/actions'
-import { Input, Button, Select, Message } from './element'
+import { Button, Select, Message } from './element'
+import { INodeDefaultProps, LinkDefault  } from './'
+import { IPortDefaultProps } from './components'
+
+import { generateLabelPosition } from './utils'
 
 const ModelBox = styled.div`
   width: 100%;
@@ -61,6 +65,174 @@ const InputBox = styled.div`
     padding-left: 0.5rem;
   }
 `
+
+const Input = styled.input`
+  padding: 10px;
+  border: 1px solid cornflowerblue;
+  width: 100%;
+`
+const Label = styled.div`
+  position: absolute;
+  width: 120px;
+`
+
+const LabelContent = styled.div`
+  padding: 5px 10px;
+  background: cornflowerblue;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+`
+
+const PortDefaultOuter = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: cornflowerblue;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background: cornflowerblue;
+  }
+  & svg {
+    width: 15px;
+    height: 15px;
+  }
+`
+
+const ProcessQueue = styled.div`
+  width: 200px;
+  height: 120px;
+  position: absolute;
+  padding: 30px;
+  background: rgb(217, 207, 138);
+  color: white;
+  border-radius: 10px;
+  & div {
+    padding: 0px;
+    margin: 0px;
+  }
+`
+
+const SimpleTask = styled.div`
+  width: 200px;
+  height: 120px;
+  position: absolute;
+  padding: 30px;
+  background: #417FA6;
+  border-radius: 4px;
+  color: white;
+  & div {
+    padding: 0px;
+    margin: 0px;
+  }
+`
+
+const ProcessPoint = styled.div`
+  width: 200px;
+  height: 120px;
+  position: absolute;
+  padding: 30px;
+  background: rgb(155, 127, 105);
+  color: white;
+  & div {
+    padding: 0px;
+    margin: 0px;
+  }
+`
+
+const StartPoint = styled.div`
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(148, 80, 81);
+  color: white;
+  border-radius: 50%;
+`
+
+const EndPoint = styled.div`
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(110, 97, 107);
+  color: white;
+  border-radius: 50%;
+`
+
+const NodeCustom = React.forwardRef(({ node, children, ...otherProps }: INodeDefaultProps, ref: React.Ref<HTMLDivElement>) => {
+  switch (node.type) {
+    case "start":
+      return (
+        <StartPoint ref={ref} {...otherProps}>
+          {children}
+        </StartPoint>
+      )
+    case "end":
+      return (
+        <EndPoint ref={ref} {...otherProps}>
+          {children}
+        </EndPoint>
+      )
+    case "simple-task":
+      return (
+        <SimpleTask ref={ref} {...otherProps}>
+          {children}
+        </SimpleTask>
+      )
+    case "process-queue":
+      return (
+        <ProcessQueue ref={ref} {...otherProps}>
+          {children}
+        </ProcessQueue>
+      )
+    case "process-point":
+      return (
+        <ProcessPoint ref={ref} {...otherProps}>
+          {children}
+        </ProcessPoint>
+      )
+    default:
+      return (
+        <SimpleTask ref={ref} {...otherProps}>
+          {children}
+        </SimpleTask>
+      )
+  }
+})
+
+const PortCustom = (props: IPortDefaultProps) => {
+  return <PortDefaultOuter />
+}
+
+const LinkCustom = (props: any) => {
+  // console.log("----props---- ", props)
+  const { startPos, endPos, link, onLabelDoubleClick } = props
+  const { centerX, centerY } = generateLabelPosition(startPos, endPos)
+  return (
+    <>
+      <LinkDefault {...props} />
+      <Label style={{ left: centerX, top: centerY }} onDoubleClick={ () => { onLabelDoubleClick({linkId: link.id}) } }>
+         { props.link.properties && props.link.properties.label && (
+           <LabelContent>{props.link.properties && props.link.properties.label}</LabelContent>
+         )}
+      </Label>
+    </>
+  )
+}
 
 export interface IFlowChartWithStateProps {
   initialValue: IChart
@@ -399,7 +571,12 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   }
 
   public render () {
-    const { Components, config } = this.props
+    const { config } = this.props
+    const Components = {
+      Port: PortCustom,
+      Node: NodeCustom,
+      Link: LinkCustom
+    }
     // console.log("this state: ", this.state)
 
     return (
