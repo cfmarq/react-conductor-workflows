@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getLinkPosition = void 0;
 exports.getLinkPosition = function (node, portId) {
     var port = node.ports[portId];
     var nodeWidth = (!!node && !!node.size) ? node.size.width : 0;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateLabelPosition = exports.noop = void 0;
 exports.noop = function () { return null; };
 exports.generateLabelPosition = function (startPos, endPos) {
     var centerX = 0, centerY = 0;

@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CanvasWrapper = void 0;
 var React = require("react");
 var react_draggable_1 = require("react-draggable");
 var __1 = require("../../");

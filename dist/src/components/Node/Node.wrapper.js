@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NodeWrapper = void 0;
 var React = require("react");
 var ReactDOM = require("react-dom");
 var react_draggable_1 = require("react-draggable");

@@ -28,6 +28,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FlowChartWithState = void 0;
 var React = require("react");
 var styled_components_1 = require("styled-components");
 var mapValues_1 = require("./container/utils/mapValues");
@@ -37,7 +38,7 @@ var element_1 = require("./element");
 var ModelBox = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: rgba(0,0,0,0.8);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: rgba(0,0,0,0.8);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"])));
 var ModelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  position: relative;\n  width: 50%;\n  background: #fff;\n  margin: 10% auto;\n  border-radius: 10px;\n  padding: 0.5rem;\n"], ["\n  position: relative;\n  width: 50%;\n  background: #fff;\n  margin: 10% auto;\n  border-radius: 10px;\n  padding: 0.5rem;\n"])));
 var ButtonBox = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  cursor: pointer;\n"])));
-var InputBox = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n  \n  & label {\n    width: 20%;\n  }\n\n  & input {\n    width: 100%;\n    height: 30px;\n    padding-left: 0.5rem;\n  }\n"], ["\n  font-size: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n  \n  & label {\n    width: 20%;\n  }\n\n  & input {\n    width: 100%;\n    height: 30px;\n    padding-left: 0.5rem;\n  }\n"])));
+var InputBox = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  font-size: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n\n  & label {\n    width: 20%;\n  }\n\n  & input {\n    width: 100%;\n    height: 30px;\n    padding-left: 0.5rem;\n  }\n"], ["\n  font-size: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n\n  & label {\n    width: 20%;\n  }\n\n  & input {\n    width: 100%;\n    height: 30px;\n    padding-left: 0.5rem;\n  }\n"])));
 var timer = null;
 /**
  * Flow Chart With State
@@ -56,7 +57,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 clickNodeId: nodeId,
                 nodeName: clickNodeProperties.name,
                 nodeId: clickNodeProperties.Id,
-                nodeRoleOption: !!clickNodeProperties.nodeRole ? clickNodeProperties.nodeRole : ""
+                nodeTaskReferenceName: clickNodeProperties.type,
+                nodeTypeOption: !!clickNodeProperties.nodeType ? clickNodeProperties.nodeType : ""
             }, function () {
                 _this.setState({
                     isModelShow: true
@@ -95,6 +97,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 isModelShow: false,
                 nodeName: "",
                 nodeId: "",
+                nodeTaskReferenceName: "",
                 linkLabel: ""
             });
         };
@@ -131,6 +134,11 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeId: e.currentTarget.value
             });
         };
+        _this.handleTaskReferenceNameInput = function (e) {
+            _this.setState({
+                nodeTaskReferenceName: e.currentTarget.value
+            });
+        };
         _this.handleLinkDescriptionInput = function (e) {
             _this.setState({
                 linkLabel: e.currentTarget.value
@@ -147,7 +155,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
             _nodes[_nodeId].properties = {
                 name: _this.state.nodeName,
                 Id: _this.state.nodeId,
-                nodeRole: _this.state.nodeRoleOption
+                type: _this.state.nodeTaskReferenceName,
+                nodeType: _this.state.nodeTypeOption
             };
             _this.setState({
                 nodes: _nodes,
@@ -173,15 +182,15 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 linkLabel: ""
             });
         };
-        _this.handleNodeRoleChange = function (value) {
+        _this.handleNodeTypeChange = function (value) {
             // console.log(value)
             _this.setState({
-                nodeRoleOption: value
+                nodeTypeOption: value
             });
         };
         _this.renderAddNewNodeModel = function () {
-            var _a = _this.props.nodeRoleOptions, nodeRoleOptions = _a === void 0 ? [] : _a;
-            // console.log("nodeRoleOptions: ", nodeRoleOptions)
+            var _a = _this.props.nodeTypeOptions, nodeTypeOptions = _a === void 0 ? [] : _a;
+            // console.log("nodeTypeOptions: ", nodeTypeOptions)
             return (React.createElement(ModelBox, { className: _this.state.isModelShow ? "" : "hide" },
                 React.createElement(ModelContent, null,
                     React.createElement("div", { className: "InputBox" },
@@ -192,8 +201,11 @@ var FlowChartWithState = /** @class */ (function (_super) {
                             React.createElement("label", null, "Id:"),
                             React.createElement(element_1.Input, { onChange: _this.handleDescriptionInput, value: _this.state.nodeId, type: "text" })),
                         React.createElement(InputBox, null,
-                            React.createElement("label", null, "Role:"),
-                            React.createElement(element_1.Select, { optionList: nodeRoleOptions, value: !!_this.state.nodeRoleOption ? _this.state.nodeRoleOption : nodeRoleOptions[0].rGuid, onChange: _this.handleNodeRoleChange }))),
+                            React.createElement("label", null, "Task Reference Name:"),
+                            React.createElement(element_1.Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
+                        React.createElement(InputBox, null,
+                            React.createElement("label", null, "Type:"),
+                            React.createElement(element_1.Select, { optionList: nodeTypeOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : nodeTypeOptions[0].rGuid, onChange: _this.handleNodeTypeChange }))),
                     React.createElement(ButtonBox, null,
                         React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
                         React.createElement(element_1.Button, { onClick: _this.handleCancelEditNode, type: "cancel" }, "Cancel")))));
@@ -227,7 +239,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
         _this.renderAlertMessage = function () {
             return (React.createElement(element_1.Message, { errorInfo: _this.state.alertMessageInfo, alertMessageStatus: _this.state.alertMessageStatus }));
         };
-        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeId: "", nodeRoleOption: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
+        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeId: "", nodeTaskReferenceName: "", nodeTypeOption: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
         return _this;
     }
     FlowChartWithState.prototype.componentDidUpdate = function () {
@@ -279,7 +291,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 modelOption: "addNode",
                 newNodeId: newNode[0],
                 nodeName: "",
-                nodeId: ""
+                nodeId: "",
+                nodeTaskReferenceName: ""
             });
         }
         if (Object.keys(this.state.nodes).length != this.state.preNodes.length) {

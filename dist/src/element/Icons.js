@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ArrowIcon = void 0;
 var React = require("react");
 exports.ArrowIcon = function (_a) {
     var _b = _a.width, width = _b === void 0 ? 30 : _b, _c = _a.height, height = _c === void 0 ? 30 : _c;

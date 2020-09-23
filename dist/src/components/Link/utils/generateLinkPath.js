@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateLinkPath = void 0;
 exports.generateLinkPath = function (startPos, endPos) {
     // console.log("start point: ", startPos)
     // console.log("end point: ", endPos)

@@ -4,6 +4,7 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     return cooked;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SidebarItem = void 0;
 var React = require("react");
 var styled_components_1 = require("styled-components");
 var __1 = require("../");
@@ -13,14 +14,14 @@ var Outer = styled_components_1.default.div(templateObject_1 || (templateObject_
     switch (className) {
         case "start":
             if (!!itemStyle) {
-                return "\n            &.start " + itemStyle + "  \n          ";
+                return "\n            &.start " + itemStyle + "\n          ";
             }
             return "\n          &.start {\n            width: 100px;\n            height: 100px;\n            border-radius: 50px;\n            background: rgb(148, 80, 81);\n            line-height: 100px;\n            padding: 0;\n            text-align: center;\n          }\n        ";
         case "simple-task":
             if (!!itemStyle) {
                 return "&.simple-task " + itemStyle;
             }
-            return "\n          &.simple-task {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            background: rgb(155, 127, 105);\n            padding: 0;\n          }\n        ";
+            return "\n          &.simple-task {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            background: #417FA6;\n            border-radius: 4px;\n            padding: 0;\n          }\n        ";
         case "process-queue":
             if (!!itemStyle) {
                 return "&.process-queue " + itemStyle + "  ";

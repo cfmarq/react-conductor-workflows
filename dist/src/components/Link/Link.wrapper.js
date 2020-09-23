@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LinkWrapper = void 0;
 var React = require("react");
 var utils_1 = require("../../utils");
 var Link_default_1 = require("./Link.default");

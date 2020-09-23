@@ -4,6 +4,7 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     return cooked;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LinkDefault = void 0;
 var React = require("react");
 var styled_components_1 = require("styled-components");
 var __1 = require("../../");

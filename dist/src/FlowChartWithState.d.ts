@@ -6,7 +6,7 @@ export interface IFlowChartWithStateProps {
     config?: IConfig;
     getWorkFlowChartValue?: (workFlowValue: any) => void;
     isAllowAddLinkLabel?: boolean;
-    nodeRoleOptions: any[];
+    nodeTypeOptions: any[];
 }
 /**
  * Flow Chart With State
@@ -21,10 +21,11 @@ export declare class FlowChartWithState extends React.Component<IFlowChartWithSt
     handleCancelEditNode: () => void;
     handleNameInput: (e: any) => void;
     handleDescriptionInput: (e: any) => void;
+    handleTaskReferenceNameInput: (e: any) => void;
     handleLinkDescriptionInput: (e: any) => void;
     setNodeInfo: () => boolean;
     setLinkInfo: () => void;
-    handleNodeRoleChange: (value: string) => void;
+    handleNodeTypeChange: (value: string) => void;
     renderAddNewNodeModel: () => JSX.Element;
     renderAddNewLinkModel: () => false | JSX.Element;
     warningMessage: (content: string) => void;

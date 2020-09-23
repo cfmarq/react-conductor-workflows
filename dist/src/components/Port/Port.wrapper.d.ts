@@ -27,6 +27,6 @@ export declare class PortWrapper extends React.Component<IPortWrapperProps> {
     context: React.ContextType<typeof CanvasContext>;
     private nodeRef;
     componentDidUpdate(prevProps: IPortWrapperProps): void;
-    onMouseDown: (startEvent: React.MouseEvent<Element, MouseEvent>) => void;
+    onMouseDown: (startEvent: React.MouseEvent) => void;
     render(): JSX.Element;
 }
