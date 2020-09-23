@@ -282,7 +282,7 @@ const endPoint = {
   },
 }
 
-const nodeRoleOptions = [
+const nodeTypeOptions = [
   {
     rGuid: "001",
     rName: "001"
@@ -314,7 +314,7 @@ const DragAndDropSidebar = () => (
       <FlowChartWithState
         isAllowAddLinkLabel = {true}
         initialValue={chartSimple}
-        nodeRoleOptions={nodeRoleOptions}
+        nodeTypeOptions={nodeTypeOptions}
         getWorkFlowChartValue={getWorkFlowChartValue}
         Components={{
           Port: PortCustom,

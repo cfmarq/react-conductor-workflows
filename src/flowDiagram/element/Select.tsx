@@ -126,9 +126,9 @@ export const Select = ({ optionList = [], value, onChange }: ISelectProps) => {
   const [ selectValue, setSelectValue ] = useState(value)
 
   useEffect(() => {
-    let selectRole = optionList.filter(role => role.rGuid === value);
-    let selectRoleName = selectRole[0].rName;
-    setSelectValue(selectRoleName)
+    let selectType = optionList.filter(Type => Type.rGuid === value);
+    let selectTypeName = selectType[0].rName;
+    setSelectValue(selectTypeName)
   }, [ value ])
 
   const handleClickOption = (optionValue: string) => {
