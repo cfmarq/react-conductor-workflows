@@ -1,0 +1,1 @@
+{"version":3,"file":"DefaultPortFactory.js","sourceRoot":"","sources":["../../../src/port/DefaultPortFactory.tsx"],"names":[],"mappings":";;;AAAA,yDAAsD;AACtD,uEAAuE;AAGvE,MAAa,kBAAmB,SAAQ,wCAAqD;IAC5F;QACC,KAAK,CAAC,SAAS,CAAC,CAAC;IAClB,CAAC;IAED,aAAa;QACZ,OAAO,IAAI,mCAAgB,CAAC;YAC3B,IAAI,EAAE,SAAS;SACf,CAAC,CAAC;IACJ,CAAC;CACD;AAVD,gDAUC"}

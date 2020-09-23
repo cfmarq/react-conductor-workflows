@@ -1,0 +1,1 @@
+{"version":3,"file":"PathFindingLinkModel.js","sourceRoot":"","sources":["../../../src/link/PathFindingLinkModel.ts"],"names":[],"mappings":";;;AAAA,qEAAkE;AAClE,mFAAkG;AAElG,MAAa,oBAAqB,SAAQ,0CAAgB;IACzD,YAAY,UAAmC,EAAE;QAChD,KAAK,iBACJ,IAAI,EAAE,+CAAsB,CAAC,IAAI,IAC9B,OAAO,EACT,CAAC;IACJ,CAAC;IAED,eAAe;QACd,OAAO,KAAK,CAAC;IACd,CAAC;CACD;AAXD,oDAWC"}
