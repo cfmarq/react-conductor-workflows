@@ -10,5 +10,5 @@ This React plugin is based on:
 ## Install
 
 ```shell
-npm install react-conductor-workflows
+npm install react-conductor-workflows@0.1.0
 ```
