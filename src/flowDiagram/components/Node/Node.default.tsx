@@ -86,7 +86,7 @@ const ProcessQueue = styled.div`
   }
 `
 
-const ProcessPoint = styled.div`
+const SystemTask = styled.div`
   width: 200px;
   height: 120px;
   position: absolute;
@@ -130,11 +130,11 @@ export const NodeDefault = React.forwardRef(({ node, children, ...otherProps }: 
           {children}
         </ProcessQueue>
       )
-    case "process-point":
+    case "system-task":
       return (
-        <ProcessPoint ref={ref} {...otherProps}>
+        <SystemTask ref={ref} {...otherProps}>
           {children}
-        </ProcessPoint>
+        </SystemTask>
       )
   }
   return (

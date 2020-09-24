@@ -74,7 +74,7 @@ const ProcessQueue = styled.div`
   }
 `
 
-const ProcessPoint = styled.div`
+const SystemTask = styled.div`
   width: 200px;
   height: 120px;
   position: absolute;
@@ -140,11 +140,11 @@ const NodeCustom = React.forwardRef(({ node, children, ...otherProps }: INodeDef
           {children}
         </ProcessQueue>
       )
-    case "process-point":
+    case "system-task":
       return (
-        <ProcessPoint ref={ref} {...otherProps}>
+        <SystemTask ref={ref} {...otherProps}>
           {children}
-        </ProcessPoint>
+        </SystemTask>
       )
   }
 })
@@ -244,7 +244,7 @@ const processQueuePoint = {
   }
 };
 
-const processPoint = {
+const systemTask = {
   port1: {
     id: 'port1',
     type: 'top',
@@ -330,7 +330,7 @@ const DragAndDropSidebar = () => (
       </Message>
       <SidebarItem type="start" ports={startPoint} itemStyle={startItemStyle} />
       <SidebarItem type="process-queue" ports={processQueuePoint} />
-      <SidebarItem type="process-point"  ports={processPoint} />
+      <SidebarItem type="system-task"  ports={systemTask} />
       <SidebarItem type="end" ports={ endPoint } />
     </Sidebar>
   </Page>

@@ -12,7 +12,6 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.onCanvasDrop = exports.onPortPositionChange = exports.onNodeSizeChange = exports.onNodeDoubleClick = exports.onNodeClick = exports.onDeleteKey = exports.onCanvasClick = exports.onLinkClick = exports.onLinkMouseLeave = exports.onLinkMouseEnter = exports.onLinkCancel = exports.onLinkComplete = exports.onLinkMove = exports.onLinkStart = exports.onDragCanvas = exports.onDragNode = void 0;
-var uuid_1 = require("uuid");
 var rotate_1 = require("./utils/rotate");
 /**
  * This file contains actions for updating state after each of the required callbacks
@@ -200,7 +199,8 @@ exports.onPortPositionChange = function (_a) {
 exports.onCanvasDrop = function (_a) {
     var config = _a.config, data = _a.data, position = _a.position;
     return function (chart) {
-        var id = uuid_1.v4();
+        //const id = v4()
+        var id = Object.keys(chart.nodes).length.toString();
         chart.nodes[id] = {
             id: id,
             position: config && config.snapToGrid ? { x: Math.round(position.x / 20) * 20, y: Math.round(position.y / 20) * 20 } : position,

@@ -10,104 +10,12 @@ import { generateLabelPosition } from './utils'
 const simpleTaskPorts = {
   port1: {
     id: 'port1',
-    type: 'left',
+    type: 'top',
   },
   port2: {
     id: 'port2',
-    type: 'right',
-  }
-}
-
-const startPoint = {
-  port1: {
-    id: 'port1',
-    type: 'left',
-  },
-  port2: {
-    id: 'port2',
-    type: 'right',
-  },
-  port3: {
-    id: 'port3',
-    type: 'top',
-  },
-  port4: {
-    id: 'port4',
-    type: 'bottom',
-  },
-  port5: {
-    id: 'port5',
-    type: 'left',
-  },
-  port6: {
-    id: 'port6',
-    type: 'right',
-  },
-  port7: {
-    id: 'port7',
-    type: 'top',
-  },
-  port8: {
-    id: 'port8',
     type: 'bottom',
   }
-};
-
-const processQueuePoint = {
-  port1: {
-    id: 'port1',
-    type: 'top',
-  },
-  port2: {
-    id: 'port2',
-    type: 'right',
-  },
-  port3: {
-    id: 'port3',
-    type: 'bottom',
-  },
-  port4: {
-    id: 'port4',
-    type: 'left',
-  }
-};
-
-const processPoint = {
-  port1: {
-    id: 'port1',
-    type: 'top',
-  },
-  port2: {
-    id: 'port2',
-    type: 'right',
-  },
-  port3: {
-    id: 'port3',
-    type: 'bottom',
-  },
-  port4: {
-    id: 'port4',
-    type: 'left',
-  }
-};
-
-const endPoint = {
-  port1: {
-    id: 'port1',
-    type: 'left',
-  },
-  port2: {
-    id: 'port2',
-    type: 'right',
-  },
-  port3: {
-    id: 'port3',
-    type: 'top',
-  },
-  port4: {
-    id: 'port4',
-    type: 'bottom',
-  },
 }
 
 const nodeTypeOptions = [
@@ -135,7 +43,7 @@ let workFlowValue = {}
 
 let getWorkFlowChartValue = (newWorkFlowValue) => {
     workFlowValue = newWorkFlowValue
-    //console.log("work-flow 的JSON数据： ", workFlowValue)
+    console.log("work-flow 的JSON数据： ", workFlowValue)
 }
 
 const validateLink = ({ linkId, fromNodeId, fromPortId, toNodeId, toPortId, chart }) => {
@@ -147,15 +55,23 @@ const validateLink = ({ linkId, fromNodeId, fromPortId, toNodeId, toPortId, char
     return true;
 }
 
+const simpleTaskFields = {
+  name: "",
+  taskReferenceName: "",
+  type: ""
+}
+
 const DragAndDropSidebar = () => (
   <Page>
     <Sidebar>
       <SidebarItem type="simple-task" ports={simpleTaskPorts} />
+      <SidebarItem type="system-task" ports={simpleTaskPorts} />
     </Sidebar>
     <Content>
       <FlowChartWithState
         isAllowAddLinkLabel = {true}
         initialValue={chartSimple}
+        simpleTaskFields={simpleTaskFields}
         nodeTypeOptions={nodeTypeOptions}
         getWorkFlowChartValue={getWorkFlowChartValue}
         config={{ validateLink: validateLink, readonly: false }}

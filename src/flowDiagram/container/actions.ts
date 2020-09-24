@@ -1,4 +1,4 @@
-import { v4 } from 'uuid'
+//import { v4 } from 'uuid'
 import {
   IChart, IOnCanvasClick, IOnCanvasDrop, IOnDeleteKey, IOnDragCanvas, IOnDragNode, IOnLinkCancel,
   IOnLinkComplete, IOnLinkMouseEnter, IOnLinkMouseLeave, IOnLinkMove, IOnLinkStart, IOnNodeClick,
@@ -180,7 +180,9 @@ export const onPortPositionChange: IOnPortPositionChange = ({ node: nodeToUpdate
   }
 
 export const onCanvasDrop: IOnCanvasDrop = ({ config, data, position }) => (chart: IChart): IChart => {
-  const id = v4()
+  //const id = v4()
+  const id = Object.keys(chart.nodes).length.toString();
+
   chart.nodes[id] = {
     id,
     position: config && config.snapToGrid ? { x: Math.round(position.x / 20) * 20, y: Math.round(position.y / 20) * 20 } : position,
@@ -189,5 +191,6 @@ export const onCanvasDrop: IOnCanvasDrop = ({ config, data, position }) => (char
     ports: data.ports,
     properties: data.properties,
   }
+
   return chart
 }

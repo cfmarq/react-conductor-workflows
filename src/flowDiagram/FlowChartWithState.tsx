@@ -134,7 +134,7 @@ const SimpleTask = styled.div`
   }
 `
 
-const ProcessPoint = styled.div`
+const SystemTask = styled.div`
   width: 200px;
   height: 120px;
   position: absolute;
@@ -199,11 +199,11 @@ const NodeCustom = React.forwardRef(({ node, children, ...otherProps }: INodeDef
           {children}
         </ProcessQueue>
       )
-    case "process-point":
+    case "system-task":
       return (
-        <ProcessPoint ref={ref} {...otherProps}>
+        <SystemTask ref={ref} {...otherProps}>
           {children}
-        </ProcessPoint>
+        </SystemTask>
       )
     default:
       return (
@@ -241,6 +241,7 @@ export interface IFlowChartWithStateProps {
   getWorkFlowChartValue?: (workFlowValue: any) => void
   isAllowAddLinkLabel?: boolean
   nodeTypeOptions: any[]
+  simpleTaskFields: any[]
 }
 
 let timer:any = null;
@@ -252,6 +253,7 @@ let timer:any = null;
 export class FlowChartWithState extends React.Component<IFlowChartWithStateProps, IChart> {
   constructor (props: IFlowChartWithStateProps) {
     super(props)
+
     this.state = {
       ...props.initialValue,
       preNodes: Object.keys(props.initialValue.nodes),
@@ -261,6 +263,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeName: "",
       nodeId: "",
       nodeTaskReferenceName: "",
+      nodeInputParameters: "",
+      nodeCaseValueParam: "",
       nodeTypeOption: "",
       linkLabel: "",
       newNodeId: "",
@@ -269,9 +273,11 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       clickLinkId: "",
       modelOption: "addNode",
       alertMessageInfo: "",
-      alertMessageStatus: "init"
+      alertMessageStatus: "init",
     }
+
   }
+
 
   public state: IChart
 
@@ -285,7 +291,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       clickNodeId: nodeId,
       nodeName: clickNodeProperties.name,
       nodeId: clickNodeProperties.Id,
-      nodeTaskReferenceName: clickNodeProperties.type,
+      nodeTaskReferenceName: clickNodeProperties.taskReferenceName,
+      nodeInputParameters: clickNodeProperties.inputParameters,
+      nodeCaseValueParam: clickNodeProperties.caseValueParam,
       nodeTypeOption: !!clickNodeProperties.nodeType ? clickNodeProperties.nodeType : ""
     }, () => {
       this.setState({
@@ -322,6 +330,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeName: "",
       nodeId: "",
       nodeTaskReferenceName: "",
+      nodeInputParameters: "",
+      nodeCaseValueParam: "",
       linkLabel: ""
     });
   }
@@ -372,6 +382,18 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     });
   }
 
+  handleInputParametersInput = (e: any) => {
+    this.setState({
+      nodeInputParameters: e.currentTarget.value
+    });
+  }
+
+  handleCaseValueParamInput = (e: any) => {
+    this.setState({
+      nodeCaseValueParam: e.currentTarget.value
+    });
+  }
+
   handleLinkDescriptionInput = (e: any) => {
     this.setState({
       linkLabel: e.currentTarget.value
@@ -389,7 +411,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     _nodes[_nodeId].properties = {
       name: this.state.nodeName,
       Id: this.state.nodeId,
-      type: this.state.nodeTaskReferenceName,
+      taskReferenceName: this.state.nodeTaskReferenceName,
+      inputParameters: this.state.nodeInputParameters,
+      caseValueParam: this.state.nodeCaseValueParam,
       nodeType: this.state.nodeTypeOption
     }
     this.setState({
@@ -426,39 +450,93 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   }
 
   renderAddNewNodeModel = () => {
-    const { nodeTypeOptions = [] } = this.props
-    // console.log("nodeTypeOptions: ", nodeTypeOptions)
+    //const { nodeTypeOptions = [] } = this.props
+
+    const simpleTaskOptions = [
+      {
+        rGuid: "SIMPLE",
+        rName: "SIMPLE"
+      }
+    ]
+
+    const systemTaskOptions = [
+      {
+        rGuid: "DECISION",
+        rName: "DECISION"
+      },
+      {
+        rGuid: "JOIN",
+        rName: "JOIN"
+      },
+    ]
+
     return (
-      <ModelBox className={this.state.isModelShow ? "" : "hide"}>
-        <ModelContent>
-          <div className="InputBox">
-            <InputBox>
-              <label>Name:</label>
-              <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
-            </InputBox>
-            <InputBox>
-              <label>Id:</label>
-              <Input onChange={this.handleDescriptionInput} value={this.state.nodeId} type="text" />
-            </InputBox>
-            <InputBox>
-              <label>Task Reference Name:</label>
-              <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
-            </InputBox>
-            <InputBox>
-                <label>Type:</label>
-                <Select
-                  optionList={ nodeTypeOptions }
-                  value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : nodeTypeOptions[0].rGuid}
-                  onChange={this.handleNodeTypeChange} >
-                </Select>
-            </InputBox>
-          </div>
-          <ButtonBox>
-            <Button onClick={this.setNodeInfo} type="primary">Confirm</Button>
-            <Button onClick={this.handleCancelEditNode} type="cancel">Cancel</Button>
-          </ButtonBox>
-        </ModelContent>
-      </ModelBox>
+
+      <>
+        <ModelBox className={this.state.isModelShow ? "" : "hide"}>
+          <ModelContent>
+            <div className="InputBox">
+                {Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type === "simple-task" ?
+                  <>
+                    <InputBox>
+                      <label>Name:</label>
+                      <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
+                    </InputBox>
+                    <InputBox>
+                      <label>Task Reference Name:</label>
+                      <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
+                    </InputBox>
+                    <InputBox>
+                        <label>Type:</label>
+                        <Select
+                          optionList={ simpleTaskOptions }
+                          value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : simpleTaskOptions[0].rGuid}
+                          onChange={this.handleNodeTypeChange} >
+                        </Select>
+                    </InputBox>
+                    <InputBox>
+                      <label>Input Parameters:</label>
+                      <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+                    </InputBox>
+                  </>
+                :
+                  <>
+                    <InputBox>
+                      <label>Name:</label>
+                      <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
+                    </InputBox>
+                    <InputBox>
+                      <label>Task Reference Name:</label>
+                      <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
+                    </InputBox>
+                    <InputBox>
+                        <label>Type:</label>
+                        <Select
+                          optionList={ systemTaskOptions }
+                          value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : systemTaskOptions[0].rGuid}
+                          onChange={this.handleNodeTypeChange} >
+                        </Select>
+                    </InputBox>
+                    <InputBox>
+                      <label>Case Value Param:</label>
+                      <Input onChange={this.handleCaseValueParamInput} value={this.state.nodeCaseValueParam} type="text" />
+                    </InputBox>
+                    <InputBox>
+                      <label>Input Parameters:</label>
+                      <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+                    </InputBox>
+
+                  </>
+                }
+
+            </div>
+            <ButtonBox>
+              <Button onClick={this.setNodeInfo} type="primary">Confirm</Button>
+              <Button onClick={this.handleCancelEditNode} type="cancel">Cancel</Button>
+            </ButtonBox>
+          </ModelContent>
+        </ModelBox>
+      </>
     )
   }
 
@@ -505,6 +583,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   }
 
   componentDidUpdate() {
+
     //get work flow data
     let flowData = this.state
     delete flowData.offset.node
@@ -560,7 +639,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         newNodeId: newNode[0],
         nodeName: "",
         nodeId: "",
-        nodeTaskReferenceName: ""
+        nodeTaskReferenceName: "",
+        nodeInputParameters: "",
+        nodeCaseValueParam: ""
       });
     }
     if (Object.keys(this.state.nodes).length != this.state.preNodes.length) {
@@ -577,6 +658,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       Node: NodeCustom,
       Link: LinkCustom
     }
+
     // console.log("this state: ", this.state)
 
     return (

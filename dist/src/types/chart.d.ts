@@ -15,6 +15,8 @@ export interface IChart {
     showModelName: string;
     nodeName: string;
     nodeTaskReferenceName: string;
+    nodeCaseValueParam: string;
+    nodeInputParameters: string;
     nodeId: string;
     nodeTypeOption: string;
     linkLabel: string;

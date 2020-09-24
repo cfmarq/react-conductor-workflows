@@ -27,11 +27,11 @@ var Outer = styled_components_1.default.div(templateObject_1 || (templateObject_
                 return "&.process-queue " + itemStyle + "  ";
             }
             return "\n          &.process-queue {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            border-radius: 10px;\n            background: rgb(217,207,138);\n            padding: 0;\n          }\n        ";
-        case "process-point":
+        case "system-task":
             if (!!itemStyle) {
-                return "&.process-point " + itemStyle;
+                return "&.system-task " + itemStyle;
             }
-            return "\n          &.process-point {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            background: rgb(155, 127, 105);\n            padding: 0;\n          }\n        ";
+            return "\n          &.system-task {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            background: rgb(155, 127, 105);\n            padding: 0;\n          }\n        ";
         case "end":
             if (!!itemStyle) {
                 return "&.end " + itemStyle;

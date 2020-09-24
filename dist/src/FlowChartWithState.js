@@ -58,7 +58,7 @@ var LabelContent = styled_components_1.default.div(templateObject_7 || (template
 var PortDefaultOuter = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  width: 20px;\n  height: 20px;\n  border-radius: 20px;\n  background: cornflowerblue;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: cornflowerblue;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 20px;\n  height: 20px;\n  border-radius: 20px;\n  background: cornflowerblue;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: cornflowerblue;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
 var ProcessQueue = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
 var SimpleTask = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var ProcessPoint = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SystemTask = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
 var StartPoint = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
 var EndPoint = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
 var NodeCustom = React.forwardRef(function (_a, ref) {
@@ -72,8 +72,8 @@ var NodeCustom = React.forwardRef(function (_a, ref) {
             return (React.createElement(SimpleTask, __assign({ ref: ref }, otherProps), children));
         case "process-queue":
             return (React.createElement(ProcessQueue, __assign({ ref: ref }, otherProps), children));
-        case "process-point":
-            return (React.createElement(ProcessPoint, __assign({ ref: ref }, otherProps), children));
+        case "system-task":
+            return (React.createElement(SystemTask, __assign({ ref: ref }, otherProps), children));
         default:
             return (React.createElement(SimpleTask, __assign({ ref: ref }, otherProps), children));
     }
@@ -107,7 +107,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 clickNodeId: nodeId,
                 nodeName: clickNodeProperties.name,
                 nodeId: clickNodeProperties.Id,
-                nodeTaskReferenceName: clickNodeProperties.type,
+                nodeTaskReferenceName: clickNodeProperties.taskReferenceName,
+                nodeInputParameters: clickNodeProperties.inputParameters,
+                nodeCaseValueParam: clickNodeProperties.caseValueParam,
                 nodeTypeOption: !!clickNodeProperties.nodeType ? clickNodeProperties.nodeType : ""
             }, function () {
                 _this.setState({
@@ -148,6 +150,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeName: "",
                 nodeId: "",
                 nodeTaskReferenceName: "",
+                nodeInputParameters: "",
+                nodeCaseValueParam: "",
                 linkLabel: ""
             });
         };
@@ -189,6 +193,16 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeTaskReferenceName: e.currentTarget.value
             });
         };
+        _this.handleInputParametersInput = function (e) {
+            _this.setState({
+                nodeInputParameters: e.currentTarget.value
+            });
+        };
+        _this.handleCaseValueParamInput = function (e) {
+            _this.setState({
+                nodeCaseValueParam: e.currentTarget.value
+            });
+        };
         _this.handleLinkDescriptionInput = function (e) {
             _this.setState({
                 linkLabel: e.currentTarget.value
@@ -205,7 +219,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
             _nodes[_nodeId].properties = {
                 name: _this.state.nodeName,
                 Id: _this.state.nodeId,
-                type: _this.state.nodeTaskReferenceName,
+                taskReferenceName: _this.state.nodeTaskReferenceName,
+                inputParameters: _this.state.nodeInputParameters,
+                caseValueParam: _this.state.nodeCaseValueParam,
                 nodeType: _this.state.nodeTypeOption
             };
             _this.setState({
@@ -239,26 +255,60 @@ var FlowChartWithState = /** @class */ (function (_super) {
             });
         };
         _this.renderAddNewNodeModel = function () {
-            var _a = _this.props.nodeTypeOptions, nodeTypeOptions = _a === void 0 ? [] : _a;
-            // console.log("nodeTypeOptions: ", nodeTypeOptions)
-            return (React.createElement(ModelBox, { className: _this.state.isModelShow ? "" : "hide" },
-                React.createElement(ModelContent, null,
-                    React.createElement("div", { className: "InputBox" },
-                        React.createElement(InputBox, null,
-                            React.createElement("label", null, "Name:"),
-                            React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
-                        React.createElement(InputBox, null,
-                            React.createElement("label", null, "Id:"),
-                            React.createElement(Input, { onChange: _this.handleDescriptionInput, value: _this.state.nodeId, type: "text" })),
-                        React.createElement(InputBox, null,
-                            React.createElement("label", null, "Task Reference Name:"),
-                            React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
-                        React.createElement(InputBox, null,
-                            React.createElement("label", null, "Type:"),
-                            React.createElement(element_1.Select, { optionList: nodeTypeOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : nodeTypeOptions[0].rGuid, onChange: _this.handleNodeTypeChange }))),
-                    React.createElement(ButtonBox, null,
-                        React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
-                        React.createElement(element_1.Button, { onClick: _this.handleCancelEditNode, type: "cancel" }, "Cancel")))));
+            //const { nodeTypeOptions = [] } = this.props
+            var simpleTaskOptions = [
+                {
+                    rGuid: "SIMPLE",
+                    rName: "SIMPLE"
+                }
+            ];
+            var systemTaskOptions = [
+                {
+                    rGuid: "DECISION",
+                    rName: "DECISION"
+                },
+                {
+                    rGuid: "JOIN",
+                    rName: "JOIN"
+                },
+            ];
+            return (React.createElement(React.Fragment, null,
+                React.createElement(ModelBox, { className: _this.state.isModelShow ? "" : "hide" },
+                    React.createElement(ModelContent, null,
+                        React.createElement("div", { className: "InputBox" }, Object.values(_this.props.initialValue.nodes)[Object.values(_this.props.initialValue.nodes).length - 1].type === "simple-task" ?
+                            React.createElement(React.Fragment, null,
+                                React.createElement(InputBox, null,
+                                    React.createElement("label", null, "Name:"),
+                                    React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
+                                React.createElement(InputBox, null,
+                                    React.createElement("label", null, "Task Reference Name:"),
+                                    React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
+                                React.createElement(InputBox, null,
+                                    React.createElement("label", null, "Type:"),
+                                    React.createElement(element_1.Select, { optionList: simpleTaskOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : simpleTaskOptions[0].rGuid, onChange: _this.handleNodeTypeChange })),
+                                React.createElement(InputBox, null,
+                                    React.createElement("label", null, "Input Parameters:"),
+                                    React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))
+                            :
+                                React.createElement(React.Fragment, null,
+                                    React.createElement(InputBox, null,
+                                        React.createElement("label", null, "Name:"),
+                                        React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
+                                    React.createElement(InputBox, null,
+                                        React.createElement("label", null, "Task Reference Name:"),
+                                        React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
+                                    React.createElement(InputBox, null,
+                                        React.createElement("label", null, "Type:"),
+                                        React.createElement(element_1.Select, { optionList: systemTaskOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : systemTaskOptions[0].rGuid, onChange: _this.handleNodeTypeChange })),
+                                    React.createElement(InputBox, null,
+                                        React.createElement("label", null, "Case Value Param:"),
+                                        React.createElement(Input, { onChange: _this.handleCaseValueParamInput, value: _this.state.nodeCaseValueParam, type: "text" })),
+                                    React.createElement(InputBox, null,
+                                        React.createElement("label", null, "Input Parameters:"),
+                                        React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))),
+                        React.createElement(ButtonBox, null,
+                            React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
+                            React.createElement(element_1.Button, { onClick: _this.handleCancelEditNode, type: "cancel" }, "Cancel"))))));
         };
         _this.renderAddNewLinkModel = function () {
             if (_this.props.isAllowAddLinkLabel !== true) {
@@ -289,7 +339,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
         _this.renderAlertMessage = function () {
             return (React.createElement(element_1.Message, { errorInfo: _this.state.alertMessageInfo, alertMessageStatus: _this.state.alertMessageStatus }));
         };
-        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeId: "", nodeTaskReferenceName: "", nodeTypeOption: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
+        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeId: "", nodeTaskReferenceName: "", nodeInputParameters: "", nodeCaseValueParam: "", nodeTypeOption: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
         return _this;
     }
     FlowChartWithState.prototype.componentDidUpdate = function () {
@@ -342,7 +392,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 newNodeId: newNode[0],
                 nodeName: "",
                 nodeId: "",
-                nodeTaskReferenceName: ""
+                nodeTaskReferenceName: "",
+                nodeInputParameters: "",
+                nodeCaseValueParam: ""
             });
         }
         if (Object.keys(this.state.nodes).length != this.state.preNodes.length) {

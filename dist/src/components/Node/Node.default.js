@@ -37,7 +37,7 @@ var SimpleTask = styled_components_1.default.div(templateObject_6 || (templateOb
     "\n"])), function (props) { return props.isSelected && styled_components_1.css(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    box-shadow: 0 10px 20px rgba(0,0,0,.1);\n    margin-top: -2px\n    "], ["\n    box-shadow: 0 10px 20px rgba(0,0,0,.1);\n    margin-top: -2px\n    "]))); });
 var ProcessQueue = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n  ", "\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n  ",
     "\n"])), function (props) { return props.isSelected && styled_components_1.css(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    box-shadow: 0 10px 20px rgba(0,0,0,.1);\n    margin-top: -2px\n    "], ["\n    box-shadow: 0 10px 20px rgba(0,0,0,.1);\n    margin-top: -2px\n    "]))); });
-var ProcessPoint = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n  ", "\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n  ",
+var SystemTask = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n  ", "\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n  ",
     "\n"])), function (props) { return props.isSelected && styled_components_1.css(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    box-shadow: 0 10px 20px rgba(0,0,0,.1);\n    margin-top: -2px\n    "], ["\n    box-shadow: 0 10px 20px rgba(0,0,0,.1);\n    margin-top: -2px\n    "]))); });
 exports.NodeDefault = React.forwardRef(function (_a, ref) {
     var node = _a.node, children = _a.children, otherProps = __rest(_a, ["node", "children"]);
@@ -50,8 +50,8 @@ exports.NodeDefault = React.forwardRef(function (_a, ref) {
             return (React.createElement(SimpleTask, __assign({ ref: ref }, otherProps), children));
         case "process-queue":
             return (React.createElement(ProcessQueue, __assign({ ref: ref }, otherProps), children));
-        case "process-point":
-            return (React.createElement(ProcessPoint, __assign({ ref: ref }, otherProps), children));
+        case "system-task":
+            return (React.createElement(SystemTask, __assign({ ref: ref }, otherProps), children));
     }
     return (React.createElement(StartPoint, __assign({ ref: ref }, otherProps), children));
 });

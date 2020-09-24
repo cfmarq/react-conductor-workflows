@@ -68,12 +68,12 @@ const Outer = styled.div<IOuterProps>`
             padding: 0;
           }
         `
-      case "process-point":
+      case "system-task":
         if (!!itemStyle) {
-          return `&.process-point ${itemStyle}`
+          return `&.system-task ${itemStyle}`
         }
         return `
-          &.process-point {
+          &.system-task {
             width: 120px;
             height: 60px;
             line-height: 60px;
