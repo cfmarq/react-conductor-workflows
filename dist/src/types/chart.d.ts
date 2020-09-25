@@ -17,7 +17,9 @@ export interface IChart {
     nodeTaskReferenceName: string;
     nodeCaseValueParam: string;
     nodeInputParameters: string;
+    nodeDefaultExclusiveJoinTask: string;
     nodeId: string;
+    nodeSchema: string;
     nodeTypeOption: string;
     linkLabel: string;
     newNodeId: string;

@@ -466,7 +466,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     })
   }
 
-  renderAddNewNodeModel = (type) => {
+  renderAddNewNodeModel = (type: string) => {
 
     const simpleTaskOptions = [
       {

@@ -103,13 +103,15 @@ var FlowChartWithState = /** @class */ (function (_super) {
             clickNodeProperties = !!clickNodeProperties ? clickNodeProperties : {};
             _this.setState({
                 modelOption: "editNode",
-                showModelName: "newNodeModel",
+                showModelName: "editNodeModel",
                 clickNodeId: nodeId,
                 nodeName: clickNodeProperties.name,
                 nodeId: clickNodeProperties.Id,
                 nodeTaskReferenceName: clickNodeProperties.taskReferenceName,
                 nodeInputParameters: clickNodeProperties.inputParameters,
                 nodeCaseValueParam: clickNodeProperties.caseValueParam,
+                nodeDefaultExclusiveJoinTask: clickNodeProperties.defaultExclusiveJoinTask,
+                nodeSchema: _this.state.nodes[nodeId].type,
                 nodeTypeOption: !!clickNodeProperties.nodeType ? clickNodeProperties.nodeType : ""
             }, function () {
                 _this.setState({
@@ -152,6 +154,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeTaskReferenceName: "",
                 nodeInputParameters: "",
                 nodeCaseValueParam: "",
+                nodeDefaultExclusiveJoinTask: "",
                 linkLabel: ""
             });
         };
@@ -203,6 +206,11 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeCaseValueParam: e.currentTarget.value
             });
         };
+        _this.handleDefaultExclusiveJoinTaskInput = function (e) {
+            _this.setState({
+                nodeDefaultExclusiveJoinTask: e.currentTarget.value
+            });
+        };
         _this.handleLinkDescriptionInput = function (e) {
             _this.setState({
                 linkLabel: e.currentTarget.value
@@ -222,10 +230,12 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 taskReferenceName: _this.state.nodeTaskReferenceName,
                 inputParameters: _this.state.nodeInputParameters,
                 caseValueParam: _this.state.nodeCaseValueParam,
+                defaultExclusiveJoinTask: _this.state.nodeDefaultExclusiveJoinTask,
                 nodeType: _this.state.nodeTypeOption
             };
             _this.setState({
                 nodes: _nodes,
+                nodeSchema: _nodes[_nodeId].properties.type,
                 isModelShow: false
             });
             return true;
@@ -249,13 +259,11 @@ var FlowChartWithState = /** @class */ (function (_super) {
             });
         };
         _this.handleNodeTypeChange = function (value) {
-            // console.log(value)
             _this.setState({
                 nodeTypeOption: value
             });
         };
-        _this.renderAddNewNodeModel = function () {
-            //const { nodeTypeOptions = [] } = this.props
+        _this.renderAddNewNodeModel = function (type) {
             var simpleTaskOptions = [
                 {
                     rGuid: "SIMPLE",
@@ -268,44 +276,49 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     rName: "DECISION"
                 },
                 {
-                    rGuid: "JOIN",
-                    rName: "JOIN"
+                    rGuid: "EXCLUSIVE_JOIN",
+                    rName: "EXCLUSIVE_JOIN"
                 },
             ];
+            var options;
+            if (type === "simple-task") {
+                options = simpleTaskOptions;
+            }
+            else {
+                options = systemTaskOptions;
+            }
             return (React.createElement(React.Fragment, null,
                 React.createElement(ModelBox, { className: _this.state.isModelShow ? "" : "hide" },
                     React.createElement(ModelContent, null,
-                        React.createElement("div", { className: "InputBox" }, Object.values(_this.props.initialValue.nodes)[Object.values(_this.props.initialValue.nodes).length - 1].type === "simple-task" ?
-                            React.createElement(React.Fragment, null,
-                                React.createElement(InputBox, null,
-                                    React.createElement("label", null, "Name:"),
-                                    React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
-                                React.createElement(InputBox, null,
-                                    React.createElement("label", null, "Task Reference Name:"),
-                                    React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
-                                React.createElement(InputBox, null,
-                                    React.createElement("label", null, "Type:"),
-                                    React.createElement(element_1.Select, { optionList: simpleTaskOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : simpleTaskOptions[0].rGuid, onChange: _this.handleNodeTypeChange })),
-                                React.createElement(InputBox, null,
-                                    React.createElement("label", null, "Input Parameters:"),
-                                    React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))
-                            :
-                                React.createElement(React.Fragment, null,
-                                    React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Name:"),
-                                        React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
-                                    React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Task Reference Name:"),
-                                        React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
-                                    React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Type:"),
-                                        React.createElement(element_1.Select, { optionList: systemTaskOptions, value: !!_this.state.nodeTypeOption ? _this.state.nodeTypeOption : systemTaskOptions[0].rGuid, onChange: _this.handleNodeTypeChange })),
-                                    React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Case Value Param:"),
-                                        React.createElement(Input, { onChange: _this.handleCaseValueParamInput, value: _this.state.nodeCaseValueParam, type: "text" })),
+                        React.createElement("div", { className: "InputBox" },
+                            React.createElement(InputBox, null,
+                                React.createElement("label", null, "Name:"),
+                                React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
+                            React.createElement(InputBox, null,
+                                React.createElement("label", null, "Task Reference Name:"),
+                                React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
+                            React.createElement(InputBox, null,
+                                React.createElement("label", null, "Type:"),
+                                React.createElement(element_1.Select, { optionList: options, value: options[0].rGuid, onChange: _this.handleNodeTypeChange })),
+                            type === "simple-task" &&
+                                (React.createElement(React.Fragment, null,
                                     React.createElement(InputBox, null,
                                         React.createElement("label", null, "Input Parameters:"),
                                         React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))),
+                            type === "system-task" &&
+                                (React.createElement(React.Fragment, null,
+                                    _this.state.nodeTypeOption === "DECISION" &&
+                                        (React.createElement(React.Fragment, null,
+                                            React.createElement(InputBox, null,
+                                                React.createElement("label", null, "Case Value Param:"),
+                                                React.createElement(Input, { onChange: _this.handleCaseValueParamInput, value: _this.state.nodeCaseValueParam, type: "text" })),
+                                            React.createElement(InputBox, null,
+                                                React.createElement("label", null, "Input Parameters:"),
+                                                React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))),
+                                    _this.state.nodeTypeOption === "EXCLUSIVE_JOIN" &&
+                                        (React.createElement(InputBox, null,
+                                            React.createElement("label", null, "Default Exclusive Join Task:"),
+                                            React.createElement(Input, { onChange: _this.handleDefaultExclusiveJoinTaskInput, value: _this.state.nodeDefaultExclusiveJoinTask, type: "text" })))))),
                         React.createElement(ButtonBox, null,
                             React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
                             React.createElement(element_1.Button, { onClick: _this.handleCancelEditNode, type: "cancel" }, "Cancel"))))));
@@ -339,7 +352,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
         _this.renderAlertMessage = function () {
             return (React.createElement(element_1.Message, { errorInfo: _this.state.alertMessageInfo, alertMessageStatus: _this.state.alertMessageStatus }));
         };
-        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeId: "", nodeTaskReferenceName: "", nodeInputParameters: "", nodeCaseValueParam: "", nodeTypeOption: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
+        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeId: "", nodeTaskReferenceName: "", nodeInputParameters: "", nodeCaseValueParam: "", nodeDefaultExclusiveJoinTask: "", nodeTypeOption: "", nodeSchema: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
         return _this;
     }
     FlowChartWithState.prototype.componentDidUpdate = function () {
@@ -394,7 +407,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeId: "",
                 nodeTaskReferenceName: "",
                 nodeInputParameters: "",
-                nodeCaseValueParam: ""
+                nodeCaseValueParam: "",
+                nodeDefaultExclusiveJoinTask: ""
             });
         }
         if (Object.keys(this.state.nodes).length != this.state.preNodes.length) {
@@ -412,7 +426,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
         };
         // console.log("this state: ", this.state)
         return (React.createElement(React.Fragment, null,
-            this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel() : "",
+            this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type) : "",
+            this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema) : "",
             this.state.showModelName === "newLinkModel" ? this.renderAddNewLinkModel() : "",
             this.renderAlertMessage(),
             React.createElement(_1.FlowChart, { chart: this.state, callbacks: this.stateActions, Components: Components, config: config, isAllowAddLinkLabel: !!this.props.isAllowAddLinkLabel })));
