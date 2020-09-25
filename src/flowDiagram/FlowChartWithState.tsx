@@ -174,6 +174,7 @@ const EndPoint = styled.div`
 `
 
 const NodeCustom = React.forwardRef(({ node, children, ...otherProps }: INodeDefaultProps, ref: React.Ref<HTMLDivElement>) => {
+
   switch (node.type) {
     case "start":
       return (
@@ -267,6 +268,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeCaseValueParam: "",
       nodeDefaultExclusiveJoinTask: "",
       nodeTypeOption: "",
+      nodeSchema: "",
       linkLabel: "",
       newNodeId: "",
       clickNodeId: "",
@@ -283,12 +285,13 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   public state: IChart
 
   onNodeDoubleClick: IOnNodeDoubleClick = ({ nodeId }) => {
+
     let clickNodeProperties = this.state.nodes[nodeId].properties
     clickNodeProperties = !!clickNodeProperties ? clickNodeProperties : {}
 
     this.setState({
       modelOption: "editNode",
-      showModelName: "newNodeModel",
+      showModelName: "editNodeModel",
       clickNodeId: nodeId,
       nodeName: clickNodeProperties.name,
       nodeId: clickNodeProperties.Id,
@@ -296,6 +299,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeInputParameters: clickNodeProperties.inputParameters,
       nodeCaseValueParam: clickNodeProperties.caseValueParam,
       nodeDefaultExclusiveJoinTask: clickNodeProperties.defaultExclusiveJoinTask,
+      nodeSchema: this.state.nodes[nodeId].type,
 
       nodeTypeOption: !!clickNodeProperties.nodeType ? clickNodeProperties.nodeType : ""
     }, () => {
@@ -416,7 +420,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       this.warningMessage("Please input the node name!")
       return false
     }
+
     let _nodes = this.state.nodes;
+
     let _nodeId = this.state.modelOption === "addNode" ? this.state.newNodeId : this.state.clickNodeId
     _nodes[_nodeId].properties = {
       name: this.state.nodeName,
@@ -429,6 +435,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     }
     this.setState({
       nodes: _nodes,
+      nodeSchema: _nodes[_nodeId].properties.type,
       isModelShow: false
     });
     return true
@@ -454,15 +461,12 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   }
 
   handleNodeTypeChange = (value: string): void => {
-    // console.log(value)
     this.setState({
       nodeTypeOption: value
     })
   }
 
-  renderAddNewNodeModel = () => {
-    //const { nodeTypeOptions = [] } = this.props
-
+  renderAddNewNodeModel = (type) => {
 
     const simpleTaskOptions = [
       {
@@ -481,8 +485,13 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         rName: "EXCLUSIVE_JOIN"
       },
     ]
+    var options;
 
-      {console.log(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type)}
+    if(type === "simple-task") {
+      options = simpleTaskOptions;
+    } else {
+      options = systemTaskOptions;
+    }
 
     return (
 
@@ -498,34 +507,27 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                 <label>Task Reference Name:</label>
                 <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
               </InputBox>
-              {Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type === "simple-task" &&
+              <InputBox>
+                  <label>Type:</label>
+                  <Select
+                    optionList={ options }
+                    value={options[0].rGuid}
+                    onChange={this.handleNodeTypeChange} >
+                  </Select>
+              </InputBox>
+              {type === "simple-task" &&
               (
                 <>
-                  <InputBox>
-                      <label>Type:</label>
-                      <Select
-                        optionList={ simpleTaskOptions }
-                        value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : simpleTaskOptions[0].rGuid}
-                        onChange={this.handleNodeTypeChange} >
-                      </Select>
-                  </InputBox>
+
                   <InputBox>
                     <label>Input Parameters:</label>
                     <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
                   </InputBox>
                 </>
               )}
-              {Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type === "system-task" &&
+              {type === "system-task" &&
               (
                 <>
-                  <InputBox>
-                      <label>Type:</label>
-                      <Select
-                        optionList={ systemTaskOptions }
-                        value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : systemTaskOptions[0].rGuid}
-                        onChange={this.handleNodeTypeChange} >
-                      </Select>
-                  </InputBox>
                   { this.state.nodeTypeOption === "DECISION" &&
                   (
                     <>
@@ -676,6 +678,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
   public render () {
     const { config } = this.props
+
     const Components = {
       Port: PortCustom,
       Node: NodeCustom,
@@ -686,7 +689,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
     return (
       <React.Fragment>
-        { this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel() : ""}
+        { this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type) : ""}
+        { this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema) : ""}
         { this.state.showModelName === "newLinkModel" ? this.renderAddNewLinkModel() : ""}
         { this.renderAlertMessage() }
         <FlowChart
