@@ -18,12 +18,6 @@ const simpleTaskPorts = {
   }
 }
 
-const nodeTypeOptions = [
-  {
-    rGuid: "SIMPLE",
-    rName: "SIMPLE"
-  }
-]
 
 const chartSimple = {
     offset: {
@@ -55,12 +49,6 @@ const validateLink = ({ linkId, fromNodeId, fromPortId, toNodeId, toPortId, char
     return true;
 }
 
-const simpleTaskFields = {
-  name: "",
-  taskReferenceName: "",
-  type: ""
-}
-
 const DragAndDropSidebar = () => (
   <Page>
     <Sidebar>
@@ -71,8 +59,6 @@ const DragAndDropSidebar = () => (
       <FlowChartWithState
         isAllowAddLinkLabel = {true}
         initialValue={chartSimple}
-        simpleTaskFields={simpleTaskFields}
-        nodeTypeOptions={nodeTypeOptions}
         getWorkFlowChartValue={getWorkFlowChartValue}
         config={{ validateLink: validateLink, readonly: false }}
       />

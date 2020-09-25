@@ -265,6 +265,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeTaskReferenceName: "",
       nodeInputParameters: "",
       nodeCaseValueParam: "",
+      nodeDefaultExclusiveJoinTask: "",
       nodeTypeOption: "",
       linkLabel: "",
       newNodeId: "",
@@ -294,6 +295,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeTaskReferenceName: clickNodeProperties.taskReferenceName,
       nodeInputParameters: clickNodeProperties.inputParameters,
       nodeCaseValueParam: clickNodeProperties.caseValueParam,
+      nodeDefaultExclusiveJoinTask: clickNodeProperties.defaultExclusiveJoinTask,
+
       nodeTypeOption: !!clickNodeProperties.nodeType ? clickNodeProperties.nodeType : ""
     }, () => {
       this.setState({
@@ -332,6 +335,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       nodeTaskReferenceName: "",
       nodeInputParameters: "",
       nodeCaseValueParam: "",
+      nodeDefaultExclusiveJoinTask: "",
       linkLabel: ""
     });
   }
@@ -394,6 +398,12 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     });
   }
 
+  handleDefaultExclusiveJoinTaskInput = (e: any) => {
+    this.setState({
+      nodeDefaultExclusiveJoinTask: e.currentTarget.value
+    });
+  }
+
   handleLinkDescriptionInput = (e: any) => {
     this.setState({
       linkLabel: e.currentTarget.value
@@ -414,6 +424,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       taskReferenceName: this.state.nodeTaskReferenceName,
       inputParameters: this.state.nodeInputParameters,
       caseValueParam: this.state.nodeCaseValueParam,
+      defaultExclusiveJoinTask: this.state.nodeDefaultExclusiveJoinTask,
       nodeType: this.state.nodeTypeOption
     }
     this.setState({
@@ -452,6 +463,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   renderAddNewNodeModel = () => {
     //const { nodeTypeOptions = [] } = this.props
 
+
     const simpleTaskOptions = [
       {
         rGuid: "SIMPLE",
@@ -465,10 +477,12 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         rName: "DECISION"
       },
       {
-        rGuid: "JOIN",
-        rName: "JOIN"
+        rGuid: "EXCLUSIVE_JOIN",
+        rName: "EXCLUSIVE_JOIN"
       },
     ]
+
+      {console.log(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type)}
 
     return (
 
@@ -476,59 +490,67 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         <ModelBox className={this.state.isModelShow ? "" : "hide"}>
           <ModelContent>
             <div className="InputBox">
-                {Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type === "simple-task" ?
-                  <>
+              <InputBox>
+                <label>Name:</label>
+                <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
+              </InputBox>
+              <InputBox>
+                <label>Task Reference Name:</label>
+                <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
+              </InputBox>
+              {Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type === "simple-task" &&
+              (
+                <>
+                  <InputBox>
+                      <label>Type:</label>
+                      <Select
+                        optionList={ simpleTaskOptions }
+                        value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : simpleTaskOptions[0].rGuid}
+                        onChange={this.handleNodeTypeChange} >
+                      </Select>
+                  </InputBox>
+                  <InputBox>
+                    <label>Input Parameters:</label>
+                    <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+                  </InputBox>
+                </>
+              )}
+              {Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type === "system-task" &&
+              (
+                <>
+                  <InputBox>
+                      <label>Type:</label>
+                      <Select
+                        optionList={ systemTaskOptions }
+                        value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : systemTaskOptions[0].rGuid}
+                        onChange={this.handleNodeTypeChange} >
+                      </Select>
+                  </InputBox>
+                  { this.state.nodeTypeOption === "DECISION" &&
+                  (
+                    <>
+                      <InputBox>
+                        <label>Case Value Param:</label>
+                        <Input onChange={this.handleCaseValueParamInput} value={this.state.nodeCaseValueParam} type="text" />
+                      </InputBox>
+                      <InputBox>
+                        <label>Input Parameters:</label>
+                        <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+                      </InputBox>
+                    </>
+                  )}
+                  { this.state.nodeTypeOption === "EXCLUSIVE_JOIN" &&
+                  (
                     <InputBox>
-                      <label>Name:</label>
-                      <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
-                    </InputBox>
-                    <InputBox>
-                      <label>Task Reference Name:</label>
-                      <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
-                    </InputBox>
-                    <InputBox>
-                        <label>Type:</label>
-                        <Select
-                          optionList={ simpleTaskOptions }
-                          value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : simpleTaskOptions[0].rGuid}
-                          onChange={this.handleNodeTypeChange} >
-                        </Select>
-                    </InputBox>
-                    <InputBox>
-                      <label>Input Parameters:</label>
-                      <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
-                    </InputBox>
-                  </>
-                :
-                  <>
-                    <InputBox>
-                      <label>Name:</label>
-                      <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
-                    </InputBox>
-                    <InputBox>
-                      <label>Task Reference Name:</label>
-                      <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
-                    </InputBox>
-                    <InputBox>
-                        <label>Type:</label>
-                        <Select
-                          optionList={ systemTaskOptions }
-                          value={!!this.state.nodeTypeOption ? this.state.nodeTypeOption : systemTaskOptions[0].rGuid}
-                          onChange={this.handleNodeTypeChange} >
-                        </Select>
-                    </InputBox>
-                    <InputBox>
-                      <label>Case Value Param:</label>
-                      <Input onChange={this.handleCaseValueParamInput} value={this.state.nodeCaseValueParam} type="text" />
-                    </InputBox>
-                    <InputBox>
-                      <label>Input Parameters:</label>
-                      <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+                      <label>Default Exclusive Join Task:</label>
+                      <Input onChange={this.handleDefaultExclusiveJoinTaskInput} value={this.state.nodeDefaultExclusiveJoinTask} type="text" />
                     </InputBox>
 
-                  </>
-                }
+                  )}
 
+
+                </>
+              )}
             </div>
             <ButtonBox>
               <Button onClick={this.setNodeInfo} type="primary">Confirm</Button>
@@ -641,7 +663,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         nodeId: "",
         nodeTaskReferenceName: "",
         nodeInputParameters: "",
-        nodeCaseValueParam: ""
+        nodeCaseValueParam: "",
+        nodeDefaultExclusiveJoinTask: ""
       });
     }
     if (Object.keys(this.state.nodes).length != this.state.preNodes.length) {
