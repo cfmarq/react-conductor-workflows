@@ -17,8 +17,10 @@ import { generateLabelPosition } from './utils'
 const ModelBox = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
-  background: rgba(0,0,0,0.8);
+  position: fixed;
+  top: 0
+  left: 0
+  background: rgba(9,30,66,.3);
   z-index: 99;
 
   &.hide {
@@ -29,15 +31,15 @@ const ModelBox = styled.div`
 const ModelContent = styled.div`
   animation-duration: 1s;
   animation-name: slidein;
-  position: relative;
-  width: 50%;
+  position: fixed;
+  width: 590px;
   height: 100vh;
   background: #fff;
   float: right;
-  border-radius: 10px;
-  padding: 0.5rem;
+  padding-left: 35px;
   overflow: scroll;
   right: 0;
+  top: 0;
 
   @keyframes slidein {
     from {
@@ -45,13 +47,15 @@ const ModelContent = styled.div`
     }
 
     to {
-      width: 50%;
+      width: 590px;
     }
   }
 `
 const PopupHeader = styled.div`
-  padding: 100px 15px 30px 15px;
+  padding: 100px 15px 0px 15px;
+  font-weight: 700;
   font-size: 20px;
+  line-height: 22px;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -74,13 +78,14 @@ const InputBox = styled.div`
   font-size: 20px;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin: 20px 0 30px 0;
   padding: 0 1rem;
 
   & label {
     display:block;
-    color: #417FA6
-    font-size: 14px;
+    color: #88a5bf
+    font-size: 12px;
+    padding-bottom: 2px;
   }
 
   & input {
@@ -537,15 +542,15 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
             </PopupHeader>
             <div className="InputBox">
               <InputBox>
-                <label>Name:</label>
+                <label>Name</label>
                 <Input onChange={this.handleNameInput} value={this.state.nodeName} type="text" />
               </InputBox>
               <InputBox>
-                <label>Task Reference Name:</label>
+                <label>Task Reference Name</label>
                 <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
               </InputBox>
               <InputBox>
-                  <label>Type:</label>
+                  <label>Type</label>
                   <Select
                     optionList={ options }
                     value={options[0].rGuid}
@@ -556,7 +561,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               (
                 <>
                   <InputBox>
-                    <label>Input Parameters:</label>
+                    <label>Input Parameters</label>
                     <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
                   </InputBox>
                 </>
@@ -568,11 +573,11 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   (
                     <>
                       <InputBox>
-                        <label>Case Value Param:</label>
+                        <label>Case Value Param</label>
                         <Input onChange={this.handleCaseValueParamInput} value={this.state.nodeCaseValueParam} type="text" />
                       </InputBox>
                       <InputBox>
-                        <label>Input Parameters:</label>
+                        <label>Input Parameters</label>
                         <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
                       </InputBox>
                     </>
@@ -580,7 +585,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   { this.state.nodeTypeOption === "EXCLUSIVE_JOIN" &&
                   (
                     <InputBox>
-                      <label>Default Exclusive Join Task:</label>
+                      <label>Default Exclusive Join Task</label>
                       <Input onChange={this.handleDefaultExclusiveJoinTaskInput} value={this.state.nodeDefaultExclusiveJoinTask} type="text" />
                     </InputBox>
 

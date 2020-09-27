@@ -48,11 +48,11 @@ var actions_1 = require("./container/actions");
 var element_1 = require("./element");
 var _2 = require("./");
 var utils_1 = require("./utils");
-var ModelBox = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: rgba(0,0,0,0.8);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: rgba(0,0,0,0.8);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"])));
-var ModelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: relative;\n  width: 50%;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  border-radius: 10px;\n  padding: 0.5rem;\n  overflow: scroll;\n  right: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 50%;\n    }\n  }\n"], ["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: relative;\n  width: 50%;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  border-radius: 10px;\n  padding: 0.5rem;\n  overflow: scroll;\n  right: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 50%;\n    }\n  }\n"])));
-var PopupHeader = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: 100px 15px 30px 15px;\n  font-size: 20px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 100px 15px 30px 15px;\n  font-size: 20px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
+var ModelBox = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0\n  left: 0\n  background: rgba(9,30,66,.3);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0\n  left: 0\n  background: rgba(9,30,66,.3);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"])));
+var ModelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: fixed;\n  width: 590px;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  padding-left: 35px;\n  overflow: scroll;\n  right: 0;\n  top: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 590px;\n    }\n  }\n"], ["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: fixed;\n  width: 590px;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  padding-left: 35px;\n  overflow: scroll;\n  right: 0;\n  top: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 590px;\n    }\n  }\n"])));
+var PopupHeader = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: 100px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 100px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var ButtonBox = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"])));
-var InputBox = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #417FA6\n    font-size: 14px;\n  }\n\n  & input {\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"], ["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #417FA6\n    font-size: 14px;\n  }\n\n  & input {\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"])));
+var InputBox = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"], ["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"])));
 var Input = styled_components_1.default.input(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  padding: 10px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
 var Label = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  position: absolute;\n  width: 120px;\n"], ["\n  position: absolute;\n  width: 120px;\n"])));
 var LabelContent = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: cornflowerblue;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: cornflowerblue;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
@@ -298,32 +298,32 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                 React.createElement(React.Fragment, null, "Edit Element")),
                         React.createElement("div", { className: "InputBox" },
                             React.createElement(InputBox, null,
-                                React.createElement("label", null, "Name:"),
+                                React.createElement("label", null, "Name"),
                                 React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
                             React.createElement(InputBox, null,
-                                React.createElement("label", null, "Task Reference Name:"),
+                                React.createElement("label", null, "Task Reference Name"),
                                 React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
                             React.createElement(InputBox, null,
-                                React.createElement("label", null, "Type:"),
+                                React.createElement("label", null, "Type"),
                                 React.createElement(element_1.Select, { optionList: options, value: options[0].rGuid, onChange: _this.handleNodeTypeChange })),
                             type === "simple-task" &&
                                 (React.createElement(React.Fragment, null,
                                     React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Input Parameters:"),
+                                        React.createElement("label", null, "Input Parameters"),
                                         React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))),
                             type === "system-task" &&
                                 (React.createElement(React.Fragment, null,
                                     _this.state.nodeTypeOption === "DECISION" &&
                                         (React.createElement(React.Fragment, null,
                                             React.createElement(InputBox, null,
-                                                React.createElement("label", null, "Case Value Param:"),
+                                                React.createElement("label", null, "Case Value Param"),
                                                 React.createElement(Input, { onChange: _this.handleCaseValueParamInput, value: _this.state.nodeCaseValueParam, type: "text" })),
                                             React.createElement(InputBox, null,
-                                                React.createElement("label", null, "Input Parameters:"),
+                                                React.createElement("label", null, "Input Parameters"),
                                                 React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })))),
                                     _this.state.nodeTypeOption === "EXCLUSIVE_JOIN" &&
                                         (React.createElement(InputBox, null,
-                                            React.createElement("label", null, "Default Exclusive Join Task:"),
+                                            React.createElement("label", null, "Default Exclusive Join Task"),
                                             React.createElement(Input, { onChange: _this.handleDefaultExclusiveJoinTaskInput, value: _this.state.nodeDefaultExclusiveJoinTask, type: "text" })))))),
                         React.createElement(ButtonBox, null,
                             React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
