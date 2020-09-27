@@ -112,7 +112,7 @@ const Label = styled.div`
 
 const LabelContent = styled.div`
   padding: 5px 10px;
-  background: cornflowerblue;
+  background: #88A5BF;
   color: white;
   border-radius: 5px;
   display: flex;
@@ -126,13 +126,13 @@ const PortDefaultOuter = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  background: cornflowerblue;
+  background: #88A5BF;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   &:hover {
-    background: cornflowerblue;
+    background: #88A5BF;
   }
   & svg {
     width: 15px;

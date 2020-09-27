@@ -6,13 +6,13 @@ const CustomInput = styled.input`
   height: 30px;
   padding-left: 0.5rem;
   border: 1px solid #d9d9d9;
-  border-radius: 4px;
+  border-radius: 8px;
   outline: none;
   font-size: 14px;
 
   &:focus {
     box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-    border: 1px solid #10a9ff;
+    border: 1px solid #88A5BF;
   }
 `
 

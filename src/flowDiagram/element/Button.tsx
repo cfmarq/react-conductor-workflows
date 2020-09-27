@@ -29,7 +29,7 @@ const CustomButton = styled.button`
     display: inline-block;
     font-family: inherit;
     font-size: 16px;
-    font-weight: $bold;
+    font-weight: 700;
     line-height: 19px;
     padding: 11px 24px 13px 24px;
     text-align: center;

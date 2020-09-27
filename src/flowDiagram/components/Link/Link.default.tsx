@@ -11,7 +11,7 @@ const Label = styled.div`
 
 const LabelContent = styled.div`
   padding: 5px 10px;
-  background: cornflowerblue;
+  background: #88A5BF;
   color: white;
   border-radius: 5px;
   display: flex;
@@ -62,26 +62,26 @@ export const LinkDefault = ({
             r="4"
             cx={startPos.x}
             cy={startPos.y}
-            fill="cornflowerblue"
+            fill="#88A5BF"
           />
           {/* Main line */}
           <path
             d={points}
-            stroke="cornflowerblue"
+            stroke="#88A5BF"
             strokeWidth="3"
             fill="none"
           />
           {/* Arrow */}
           <path
             d={arrow}
-            stroke="cornflowerblue"
+            stroke="#88A5BF"
             strokeWidth="3"
-            fill="cornflowerblue"
+            fill="#88A5BF"
           />
           {/* Thick line to make selection easier */}
           <path
             d={points}
-            stroke="cornflowerblue"
+            stroke="#88A5BF"
             strokeWidth="20"
             fill="none"
             strokeLinecap="round"
@@ -98,7 +98,7 @@ export const LinkDefault = ({
             r="4"
             cx={endPos.x}
             cy={endPos.y}
-            fill="cornflowerblue"
+            fill="#88A5BF"
           />
         </svg>
 
@@ -116,26 +116,26 @@ export const LinkDefault = ({
           r="4"
           cx={startPos.x}
           cy={startPos.y}
-          fill="cornflowerblue"
+          fill="#88A5BF"
         />
         {/* Main line */}
         <path
           d={points}
-          stroke="cornflowerblue"
+          stroke="#88A5BF"
           strokeWidth="3"
           fill="none"
         />
         {/* Arrow */}
         <path
           d={arrow}
-          stroke="cornflowerblue"
+          stroke="#88A5BF"
           strokeWidth="3"
-          fill="cornflowerblue"
+          fill="#88A5BF"
         />
         {/* Thick line to make selection easier */}
         <path
           d={points}
-          stroke="cornflowerblue"
+          stroke="#88A5BF"
           strokeWidth="20"
           fill="none"
           strokeLinecap="round"
@@ -152,7 +152,7 @@ export const LinkDefault = ({
           r="4"
           cx={endPos.x}
           cy={endPos.y}
-          fill="cornflowerblue"
+          fill="#88A5BF"
         />
       </svg>
     )
