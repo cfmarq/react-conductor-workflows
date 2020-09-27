@@ -27,50 +27,79 @@ const ModelBox = styled.div`
 `
 
 const ModelContent = styled.div`
+  animation-duration: 1s;
+  animation-name: slidein;
   position: relative;
   width: 50%;
+  height: 100vh;
   background: #fff;
-  margin: 10% auto;
+  float: right;
   border-radius: 10px;
   padding: 0.5rem;
+  overflow: scroll;
+  right: 0;
+
+  @keyframes slidein {
+    from {
+      width: 20%;
+    }
+
+    to {
+      width: 50%;
+    }
+  }
+`
+const PopupHeader = styled.div`
+  padding: 100px 15px 30px 15px;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 `
 
 const ButtonBox =styled.div`
   width: 100px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
   padding-right: 1rem;
   text-align: center;
   margin-right: 40px;
   margin-bottom: 20px;
+  margin-top: 40px;
   cursor: pointer;
 `
 
 const InputBox = styled.div`
   font-size: 20px;
-  display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px 0;
   padding: 0 1rem;
 
   & label {
-    width: 20%;
+    display:block;
+    color: #417FA6
+    font-size: 14px;
   }
 
   & input {
-    width: 100%;
-    height: 30px;
+    display:block;
+    width: 300px;
+    height: 40px;
     padding-left: 0.5rem;
+    border: 1px solid #88A5BF;
+    border-radius: 8px;
   }
 `
 
 const Input = styled.input`
   padding: 10px;
-  border: 1px solid cornflowerblue;
+  border: 1px solid #88A5BF;
+  border-radius: 8px;
   width: 100%;
 `
+
 const Label = styled.div`
   position: absolute;
   width: 120px;
@@ -365,6 +394,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       this.setState({
         newNodeId: "",
         nodes: _nodes,
+        nodeSchema: "",
         preNodes: _preNodes
       });
     }
@@ -466,7 +496,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     })
   }
 
-  renderAddNewNodeModel = (type: string) => {
+  renderAddNewNodeModel = (type: string, mode: string) => {
 
     const simpleTaskOptions = [
       {
@@ -498,6 +528,13 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       <>
         <ModelBox className={this.state.isModelShow ? "" : "hide"}>
           <ModelContent>
+            <PopupHeader>
+              { mode === "ADD" ?
+              <>Add element</>
+              :
+              <>Edit Element</>
+              }
+            </PopupHeader>
             <div className="InputBox">
               <InputBox>
                 <label>Name:</label>
@@ -518,7 +555,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               {type === "simple-task" &&
               (
                 <>
-
                   <InputBox>
                     <label>Input Parameters:</label>
                     <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
@@ -689,8 +725,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
     return (
       <React.Fragment>
-        { this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type) : ""}
-        { this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema) : ""}
+
+        { this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type, "ADD") : ""}
+        { this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema, "EDIT") : ""}
         { this.state.showModelName === "newLinkModel" ? this.renderAddNewLinkModel() : ""}
         { this.renderAlertMessage() }
         <FlowChart

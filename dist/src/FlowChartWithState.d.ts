@@ -30,7 +30,7 @@ export declare class FlowChartWithState extends React.Component<IFlowChartWithSt
     setNodeInfo: () => boolean;
     setLinkInfo: () => void;
     handleNodeTypeChange: (value: string) => void;
-    renderAddNewNodeModel: (type: string) => JSX.Element;
+    renderAddNewNodeModel: (type: string, mode: string) => JSX.Element;
     renderAddNewLinkModel: () => false | JSX.Element;
     warningMessage: (content: string) => void;
     renderAlertMessage: () => JSX.Element;

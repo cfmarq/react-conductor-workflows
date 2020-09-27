@@ -2,37 +2,37 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 const CustomButton = styled.button`
-    height: 32px;
-    line-height: 1.5;
 
     &.primary {
-        background-color: #1890ff;
-        border: 1px solid transparent;
-        color: #fff;
+      background-color: #ff7249;
+      color: white;
+      padding: 11px 32px 13px 32px;
+      margin-left: 15px;
     }
 
     &.cancel {
-        background-color: #fff;
-        border: 1px solid #1890ff;
-        color: #1890ff;
+      background-color: #eaeaea;
+      box-shadow: none;
+      color: #417fa6;
+      margin-left: 40px;
     }
 
-    display: inline-block;
-    padding: 0 15px;
-    margin-left: 1rem;
-    outline: none;
-    border-radius: 4px;
-    font-weight: 400;
-    font-size: 14px;
-    touch-action: manipulation;
-    cursor: pointer;
-    position: relative;
-    white-space: nowrap;
-    text-align: center;
+    &:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.24);
     box-sizing: border-box;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045)
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: $bold;
+    line-height: 19px;
+    padding: 11px 24px 13px 24px;
+    text-align: center;
 `
 
 export interface IButtonProps {

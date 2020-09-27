@@ -18,15 +18,15 @@ const SelectBox = styled.div`
 `
 
 const SelectHeader = styled.div`
-  width: 100%;
-  height: 30px;
+  width: 300px;
+  height: 40px;
   box-sizing: border-box;
   position: relative;
   display: flex;
   justify-content: space-between;
   padding-left: 0.5rem;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
+  border: 1px solid #88A5BF;
+  border-radius: 8px;
   outline: none;
   font-size: 14px;
   cursor: pointer;
@@ -44,7 +44,7 @@ const SelectValue = styled.div`
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #333;
+  color: #88A5BF;
 `
 
 const ArrowBox = styled.div`
@@ -52,7 +52,8 @@ const ArrowBox = styled.div`
   height: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center
+  color: #88A5BF;
 
   &.up-arrow {
     transform: rotate( 0deg )
@@ -66,7 +67,8 @@ const ArrowBox = styled.div`
 `
 
 const SelectBody = styled.div`
-  width: 100%;
+  width: 300px;
+  overflow: hidden;
   max-height: 200px;
   background: #fff;
   z-index: 101;
@@ -74,7 +76,7 @@ const SelectBody = styled.div`
   border-radius: 5px;
   border: 1px solid #eee;
   position: absolute;
-  top: 32px;
+  top: 40px;
   overflow-y: auto;
   box-sizing: border-box;
 
@@ -94,14 +96,14 @@ const SelectBody = styled.div`
 `
 
 const SelectOption = styled.div`
-  width: 100%;
-  height: 30px;
+  width: 300px;
+  height: 40px;
   box-sizing: border-box;
-  line-height: 30px;
+  line-height: 40px;
   padding-left: 0.5rem;
   color: #333;
   cursor: pointer;
-  
+
   &:hover {
     background: #e6f7ff;
   }
@@ -149,14 +151,14 @@ export const Select = ({ optionList = [], value, onChange }: ISelectProps) => {
     setIsBodyShow(true)
     setIsBgShow(true)
   }
-  
+
   return (
     <SelectBox>
       { isBgShow ? <SelectBackground onClick={ () => { hideSelectBody() } } /> : "" }
       <SelectHeader onClick={ () => { showSelectBody() } }>
         <SelectValue>{ selectValue }</SelectValue>
         <ArrowBox className={ isArrowUp ? "up-arrow" : "down-arrow"}>
-          <ArrowIcon width={20} height={20}/>
+          <ArrowIcon width={14} height={14}/>
         </ArrowBox>
       </SelectHeader>
       <SelectBody className={ isBodyShow ? "" : "hide-body" }>
