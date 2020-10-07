@@ -380,6 +380,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
   handleCancelEditNode = () => {
     if (this.state.modelOption === "addNode") {
+
       let _newNodeId = this.state.newNodeId
       let _nodes = {}
       let _preNodes: any = []
@@ -521,6 +522,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       },
     ]
     var options;
+
+console.log(type);
 
     if(type === "simple-task") {
       options = simpleTaskOptions;
@@ -726,12 +729,13 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       Link: LinkCustom
     }
 
-    // console.log("this state: ", this.state)
+     console.log("this state: ", this.state)
 
     return (
       <React.Fragment>
+      {console.log(this.props)}
 
-        { this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type, "ADD") : ""}
+        { this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1]!==undefined?Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1].type:"", "ADD") : ""}
         { this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema, "EDIT") : ""}
         { this.state.showModelName === "newLinkModel" ? this.renderAddNewLinkModel() : ""}
         { this.renderAlertMessage() }

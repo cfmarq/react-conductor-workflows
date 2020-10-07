@@ -283,6 +283,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 },
             ];
             var options;
+            console.log(type);
             if (type === "simple-task") {
                 options = simpleTaskOptions;
             }
@@ -430,9 +431,10 @@ var FlowChartWithState = /** @class */ (function (_super) {
             Node: NodeCustom,
             Link: LinkCustom
         };
-        // console.log("this state: ", this.state)
+        console.log("this state: ", this.state);
         return (React.createElement(React.Fragment, null,
-            this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.props.initialValue.nodes)[Object.values(this.props.initialValue.nodes).length - 1].type, "ADD") : "",
+            console.log(this.props),
+            this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1] !== undefined ? Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1].type : "", "ADD") : "",
             this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema, "EDIT") : "",
             this.state.showModelName === "newLinkModel" ? this.renderAddNewLinkModel() : "",
             this.renderAlertMessage(),

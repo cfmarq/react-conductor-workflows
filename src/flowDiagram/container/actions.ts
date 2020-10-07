@@ -119,6 +119,7 @@ export const onDeleteKey: IOnDeleteKey = () => (chart: IChart) => {
       }
     })
     // Delete the node
+
     delete chart.nodes[chart.selected.id]
   } else if (chart.selected.type === 'link' && chart.selected.id) {
     delete chart.links[chart.selected.id]
