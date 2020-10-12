@@ -1,4 +1,4 @@
-## About the react-conductor-workflows v0.1.11
+## About the react-conductor-workflows v0.1.12
 
 First of all, this is the result of customizing something existing according to my needs.
 
@@ -10,5 +10,5 @@ This React plugin is based on:
 ## Install
 
 ```shell
-npm install react-conductor-workflows@0.1.11
+npm install react-conductor-workflows@0.1.12
 ```

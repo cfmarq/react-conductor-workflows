@@ -265,7 +265,14 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 nodeTypeOption: value
             });
         };
+        _this.handleNodeNameChange = function (value) {
+            _this.setState({
+                nodeName: value
+            });
+        };
         _this.renderAddNewNodeModel = function (type, mode) {
+            var tasks = _this.props.tasks;
+            console.log(tasks);
             var simpleTaskOptions = [
                 {
                     rGuid: "SIMPLE",
@@ -283,7 +290,6 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 },
             ];
             var options;
-            console.log(type);
             if (type === "simple-task") {
                 options = simpleTaskOptions;
             }
@@ -300,7 +306,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                         React.createElement("div", { className: "InputBox" },
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Name"),
-                                React.createElement(Input, { onChange: _this.handleNameInput, value: _this.state.nodeName, type: "text" })),
+                                React.createElement(element_1.Select, { optionList: tasks, value: tasks[0].rName, onChange: _this.handleNodeNameChange })),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Task Reference Name"),
                                 React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
@@ -431,9 +437,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
             Node: NodeCustom,
             Link: LinkCustom
         };
-        console.log("this state: ", this.state);
         return (React.createElement(React.Fragment, null,
-            console.log(this.props),
             this.state.showModelName === "newNodeModel" ? this.renderAddNewNodeModel(Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1] !== undefined ? Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1].type : "", "ADD") : "",
             this.state.showModelName === "editNodeModel" ? this.renderAddNewNodeModel(this.state.nodeSchema, "EDIT") : "",
             this.state.showModelName === "newLinkModel" ? this.renderAddNewLinkModel() : "",

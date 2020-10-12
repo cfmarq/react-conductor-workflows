@@ -8,6 +8,7 @@ export interface IFlowChartWithStateProps {
     isAllowAddLinkLabel?: boolean;
     nodeTypeOptions: any[];
     simpleTaskFields: any[];
+    tasks: any[];
 }
 /**
  * Flow Chart With State
@@ -30,6 +31,7 @@ export declare class FlowChartWithState extends React.Component<IFlowChartWithSt
     setNodeInfo: () => boolean;
     setLinkInfo: () => void;
     handleNodeTypeChange: (value: string) => void;
+    handleNodeNameChange: (value: string) => void;
     renderAddNewNodeModel: (type: string, mode: string) => JSX.Element;
     renderAddNewLinkModel: () => false | JSX.Element;
     warningMessage: (content: string) => void;
