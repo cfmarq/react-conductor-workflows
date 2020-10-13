@@ -61,6 +61,23 @@ const PopupHeader = styled.div`
   justify-content: space-between;
 `
 
+const PopupSubHeader = styled.div`
+  padding: 10px 15px 0px 15px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+`
+const PopupSubtitle = styled.div`
+  padding: 20px 10px 0px 15px;
+  font-size: 14px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+`
+
 const ButtonBox =styled.div`
   width: 100px;
   display: flex;
@@ -297,6 +314,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       isModelShow: false,
       showModelName: "",
       nodeName: "",
+      nodeEnvVariables: [],
       nodeId: "",
       nodeTaskReferenceName: "",
       nodeInputParameters: "",
@@ -324,11 +342,14 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     let clickNodeProperties = this.state.nodes[nodeId].properties
     clickNodeProperties = !!clickNodeProperties ? clickNodeProperties : {}
 
+    console.log(clickNodeProperties);
+
     this.setState({
       modelOption: "editNode",
       showModelName: "editNodeModel",
       clickNodeId: nodeId,
       nodeName: clickNodeProperties.name,
+      nodeEnvVariables: clickNodeProperties.envVariables,
       nodeId: clickNodeProperties.Id,
       nodeTaskReferenceName: clickNodeProperties.taskReferenceName,
       nodeInputParameters: clickNodeProperties.inputParameters,
@@ -370,6 +391,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     this.setState({
       isModelShow: false,
       nodeName: "",
+      nodeEnvVariables: [],
       nodeId: "",
       nodeTaskReferenceName: "",
       nodeInputParameters: "",
@@ -407,12 +429,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     }
 
     this.hideModel()
-  }
-
-  handleNameInput = (e: any) => {
-    this.setState({
-      nodeName: e.currentTarget.value
-    });
   }
 
   handleDescriptionInput = (e: any) => {
@@ -464,6 +480,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     _nodes[_nodeId].properties = {
       name: this.state.nodeName,
       Id: this.state.nodeId,
+      envVariables: this.state.nodeEnvVariables,
       taskReferenceName: this.state.nodeTaskReferenceName,
       inputParameters: this.state.nodeInputParameters,
       caseValueParam: this.state.nodeCaseValueParam,
@@ -508,10 +525,38 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     })
   }
 
+  handleAddEnvVariable = () => {
+    this.setState({nodeEnvVariables: [...this.state.nodeEnvVariables, {key: "", value: ""}]})
+
+  }
+
+  handleEnvKey = (e: any, index: any): void => {
+    let nodeEnvVariables = [...this.state.nodeEnvVariables];
+    let item = {...nodeEnvVariables[index]};
+    item.key = e.target.value;
+    nodeEnvVariables[index] = item;
+    this.setState({nodeEnvVariables});
+  }
+
+  handleEnvValue = (e: any, index: any): void => {
+    let nodeEnvVariables = [...this.state.nodeEnvVariables];
+    let item = {...nodeEnvVariables[index]};
+    item.value = e.target.value;
+    nodeEnvVariables[index] = item;
+    this.setState({nodeEnvVariables});
+  }
+
+  removeVariable = (index: number) => {
+    let nodeEnvVariables = [...this.state.nodeEnvVariables];
+    nodeEnvVariables.splice(index, 1);
+    this.setState({nodeEnvVariables});
+  }
+
   renderAddNewNodeModel = (type: string, mode: string) => {
 
     const {tasks} = this.props;
-    console.log(tasks);
+    const {nodeEnvVariables} = this.state;
+    console.log(nodeEnvVariables);
 
 
     const simpleTaskOptions = [
@@ -548,7 +593,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               { mode === "ADD" ?
               <>Add element</>
               :
-              <>Edit Element</>
+              <>Edit element</>
               }
             </PopupHeader>
             <div className="InputBox">
@@ -565,6 +610,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                 <label>Task Reference Name</label>
                 <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
               </InputBox>
+
               <InputBox>
                   <label>Type</label>
                   <Select
@@ -573,6 +619,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                     onChange={this.handleNodeTypeChange} >
                   </Select>
               </InputBox>
+
               {type === "simple-task" &&
               (
                 <>
@@ -610,6 +657,32 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
                 </>
               )}
+              <PopupSubHeader>
+                Environment variables
+              </PopupSubHeader>
+
+              {nodeEnvVariables.map( (item: any, i: any) => {
+                return (
+                <>
+                  { i>0 &&
+                    <><hr style={{ width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 }} /></>
+                  }
+                  <PopupSubtitle>Variable {i+1}</PopupSubtitle>
+                  <InputBox>
+                    <label>Key</label>
+                    <Input onChange={(value) => this.handleEnvKey(value, i)} value={item.key} type="text" />
+                  </InputBox>
+                  <InputBox>
+                    <label>Value</label>
+                    <Input onChange={(value) => this.handleEnvValue(value, i)} value={item.value} type="text" />
+                  </InputBox>
+                  <Button onClick={() => this.removeVariable(i)} type="remove">Remove Variable</Button>
+                </>
+                )
+              })}
+
+              <Button onClick={this.handleAddEnvVariable} type="secondary">Add Variable</Button>
+
             </div>
             <ButtonBox>
               <Button onClick={this.setNodeInfo} type="primary">Confirm</Button>
@@ -719,6 +792,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         modelOption: "addNode",
         newNodeId: newNode[0],
         nodeName: "",
+        nodeEnvVariables: [],
         nodeId: "",
         nodeTaskReferenceName: "",
         nodeInputParameters: "",

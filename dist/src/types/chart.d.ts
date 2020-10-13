@@ -20,6 +20,7 @@ export interface IChart {
     nodeDefaultExclusiveJoinTask: string;
     nodeId: string;
     nodeSchema: string;
+    nodeEnvVariables: any;
     nodeTypeOption: string;
     linkLabel: string;
     newNodeId: string;

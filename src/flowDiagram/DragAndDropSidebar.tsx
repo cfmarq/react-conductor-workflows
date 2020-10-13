@@ -101,7 +101,8 @@ const base = {
         "inputParameters": "a",
         "caseValueParam": "",
         "defaultExclusiveJoinTask": "",
-        "nodeType": ""
+        "nodeType": "",
+        "envVariables": []
       },
       "size": {
         "width": 200,
@@ -145,7 +146,8 @@ const base = {
         "inputParameters": "b",
         "caseValueParam": "b",
         "defaultExclusiveJoinTask": "",
-        "nodeType": "DECISION"
+        "nodeType": "DECISION",
+        "envVariables": []
       },
       "size": {
         "width": 200,
@@ -189,7 +191,8 @@ const base = {
         "inputParameters": "c",
         "caseValueParam": "",
         "defaultExclusiveJoinTask": "",
-        "nodeType": "SIMPLE"
+        "nodeType": "SIMPLE",
+        "envVariables": []
       },
       "size": {
         "width": 200,
@@ -233,7 +236,8 @@ const base = {
         "inputParameters": "d",
         "caseValueParam": "",
         "defaultExclusiveJoinTask": "",
-        "nodeType": "SIMPLE"
+        "nodeType": "SIMPLE",
+        "envVariables": []
       },
       "size": {
         "width": 200,

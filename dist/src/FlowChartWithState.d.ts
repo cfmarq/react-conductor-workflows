@@ -21,7 +21,6 @@ export declare class FlowChartWithState extends React.Component<IFlowChartWithSt
     private stateActions;
     hideModel: () => void;
     handleCancelEditNode: () => void;
-    handleNameInput: (e: any) => void;
     handleDescriptionInput: (e: any) => void;
     handleTaskReferenceNameInput: (e: any) => void;
     handleInputParametersInput: (e: any) => void;
@@ -32,6 +31,10 @@ export declare class FlowChartWithState extends React.Component<IFlowChartWithSt
     setLinkInfo: () => void;
     handleNodeTypeChange: (value: string) => void;
     handleNodeNameChange: (value: string) => void;
+    handleAddEnvVariable: () => void;
+    handleEnvKey: (e: any, index: any) => void;
+    handleEnvValue: (e: any, index: any) => void;
+    removeVariable: (index: number) => void;
     renderAddNewNodeModel: (type: string, mode: string) => JSX.Element;
     renderAddNewLinkModel: () => false | JSX.Element;
     warningMessage: (content: string) => void;

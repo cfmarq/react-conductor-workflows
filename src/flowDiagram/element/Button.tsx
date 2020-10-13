@@ -10,6 +10,14 @@ const CustomButton = styled.button`
       margin-left: 15px;
     }
 
+    &.secondary {
+      background-color: #eaeaea;
+      box-shadow: none;
+      color: #417fa6;
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
     &.cancel {
       background-color: #eaeaea;
       box-shadow: none;
@@ -17,8 +25,28 @@ const CustomButton = styled.button`
       margin-left: 40px;
     }
 
+    &.remove {
+      background-color: transparent;
+      box-shadow: none;
+      color: #88A5BF;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 2px;
+      display: block;
+      margin-left: 15px;
+      margin-bottom: 15px;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
     &:hover {
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    &:focus {
+      outline: none;
     }
 
     border: none;
