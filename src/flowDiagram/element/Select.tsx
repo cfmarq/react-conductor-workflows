@@ -129,7 +129,11 @@ export const Select = ({ optionList = [], value, onChange }: ISelectProps) => {
 
   useEffect(() => {
     let selectType = optionList.filter(Type => Type.rGuid === value);
-    let selectTypeName = selectType[0].rName;
+    let selectTypeName = "Select"
+    if (selectType[0]!==undefined&&selectType[0].rName!==undefined) {
+      selectTypeName = selectType[0].rName;
+    }
+
     setSelectValue(selectTypeName)
   }, [ value ])
 

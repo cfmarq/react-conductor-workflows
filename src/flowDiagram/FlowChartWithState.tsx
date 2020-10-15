@@ -106,6 +106,7 @@ const InputBox = styled.div`
   }
 
   & input {
+    font-size: 14px;
     display:block;
     width: 300px;
     height: 40px;
@@ -187,29 +188,45 @@ const SimpleTask = styled.div`
 `
 
 const SystemTask = styled.div`
+  width: 120px;
+  height: 60px;
   position: absolute;
-  height: 100px;
-  width: 100px;
-  text-align: center;
-  padding-top: 10px;
+  padding: 15px;
+  font-size: 14px;
+  background: #417FA6;
+  border-radius: 50%;
+  color: white;
+  background: rgb(155, 127, 105);
   & div {
-    color: white;
-    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
   }
-  &:before {
-    position: absolute;
-    content: '';
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    transform: rotateX(45deg) rotateZ(45deg);
-    box-shadow: 0px 0px 12px gray;
-    background: rgb(155, 127, 105);
-    z-index: -1;
-  }
-}
 `
+
+// const SystemTask = styled.div`
+//   position: absolute;
+//   height: 100px;
+//   width: 100px;
+//   text-align: center;
+//   padding-top: 10px;
+//   & div {
+//     color: white;
+//     font-size: 14px;
+//   }
+//   &:before {
+//     position: absolute;
+//     content: '';
+//     top: 0px;
+//     left: 0px;
+//     height: 100%;
+//     width: 100%;
+//     transform: rotateX(45deg) rotateZ(45deg);
+//     box-shadow: 0px 0px 12px gray;
+//     background: rgb(155, 127, 105);
+//     z-index: -1;
+//   }
+// }
+// `
 
 const StartPoint = styled.div`
   position: absolute;
@@ -305,7 +322,6 @@ export interface IFlowChartWithStateProps {
   config?: IConfig
   getWorkFlowChartValue?: (workFlowValue: any) => void
   isAllowAddLinkLabel?: boolean
-  nodeTypeOptions: any[]
   simpleTaskFields: any[]
   tasks: any[]
 }
@@ -434,6 +450,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       this.setState({
         newNodeId: "",
         nodes: _nodes,
+        nodeTypeOption: "",
         nodeSchema: "",
         preNodes: _preNodes
       });
@@ -481,9 +498,40 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   setNodeInfo = (): boolean => {
     // console.log("nodeName: ", this.state.nodeName)
     if (this.state.nodeName.trim() === "") {
-      this.warningMessage("Please input the node name!")
+      this.warningMessage("Name field is required")
       return false
     }
+    if (this.state.nodeTaskReferenceName.trim() === "") {
+      this.warningMessage("Task reference name field is required")
+      return false
+    }
+    if (this.state.nodeTypeOption.trim() === "") {
+      this.warningMessage("Node type field is required")
+      return false
+    }
+    if (this.state.nodeInputParameters.trim() === "") {
+      this.warningMessage("Input parameters field is required")
+      return false
+    }
+    try {
+        JSON.parse(this.state.nodeInputParameters);
+    } catch (e) {
+      this.warningMessage("Input parameters field should receive a valid JSON")
+        return false;
+    }
+    if (this.state.nodeTypeOption === "DECISION") {
+      if (this.state.nodeCaseValueParam.trim() === "") {
+        this.warningMessage("Case value param field is required")
+        return false
+      }
+    }
+    if (this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
+      if (this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
+        this.warningMessage("Default exclusive join task field is required")
+        return false
+      }
+    }
+
 
     let _nodes = this.state.nodes;
 
@@ -597,7 +645,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     }
 
     return (
-
       <>
         <ModelBox className={this.state.isModelShow ? "" : "hide"}>
           <ModelContent>
@@ -613,7 +660,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   <label>Name</label>
                   <Select
                     optionList={ tasks }
-                    value={this.state.nodeName!==""?this.state.nodeName:tasks[0].rGuid}
+                    value={this.state.nodeName!==""?this.state.nodeName:""}
                     onChange={this.handleNodeNameChange}
                     >
                   </Select>
@@ -622,40 +669,27 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                 <label>Task Reference Name</label>
                 <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
               </InputBox>
-
               <InputBox>
                   <label>Type</label>
                   <Select
                     optionList={ options }
-                    value={this.state.nodeTypeOption!==""?this.state.nodeTypeOption:options[0].rGuid}
+                    value={this.state.nodeTypeOption!==""?this.state.nodeTypeOption:""}
                     onChange={this.handleNodeTypeChange} >
                   </Select>
               </InputBox>
-
-              {type === "simple-task" &&
-              (
-                <>
-                  <InputBox>
-                    <label>Input Parameters</label>
-                    <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
-                  </InputBox>
-                </>
-              )}
+              <InputBox>
+                <label>Input Parameters</label>
+                <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+              </InputBox>
               {type === "system-task" &&
               (
                 <>
                   { this.state.nodeTypeOption === "DECISION" &&
                   (
-                    <>
-                      <InputBox>
-                        <label>Case Value Param</label>
-                        <Input onChange={this.handleCaseValueParamInput} value={this.state.nodeCaseValueParam} type="text" />
-                      </InputBox>
-                      <InputBox>
-                        <label>Input Parameters</label>
-                        <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
-                      </InputBox>
-                    </>
+                    <InputBox>
+                      <label>Case Value Param</label>
+                      <Input onChange={this.handleCaseValueParamInput} value={this.state.nodeCaseValueParam} type="text" />
+                    </InputBox>
                   )}
                   { this.state.nodeTypeOption === "EXCLUSIVE_JOIN" &&
                   (
@@ -663,10 +697,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                       <label>Default Exclusive Join Task</label>
                       <Input onChange={this.handleDefaultExclusiveJoinTaskInput} value={this.state.nodeDefaultExclusiveJoinTask} type="text" />
                     </InputBox>
-
                   )}
-
-
                 </>
               )}
               <PopupSubHeader>

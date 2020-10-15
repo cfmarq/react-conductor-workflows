@@ -80,6 +80,7 @@ const Outer = styled.div<IOuterProps>`
             text-align: center;
             background: rgb(155, 127, 105);
             padding: 0;
+            border-radius: 50%
           }
         `
       case "end":

@@ -4,8 +4,6 @@ exports.generateLabelPosition = exports.noop = void 0;
 exports.noop = function () { return null; };
 exports.generateLabelPosition = function (startPos, endPos) {
     var centerX = 0, centerY = 0;
-    console.log(startPos);
-    console.log(endPos);
     var startNodeHeight = !!startPos.nodeHeight ? startPos.nodeHeight : 0;
     if (startPos.portType === "top" && endPos.portType === "top") {
         centerX = (startPos.x + endPos.x) / 2 - 40;

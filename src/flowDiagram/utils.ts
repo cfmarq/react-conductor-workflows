@@ -9,8 +9,6 @@ export interface ILabelPosition {
 
 export const generateLabelPosition = (startPos: IPosition, endPos: IPosition): ILabelPosition => {
     let centerX = 0, centerY = 0
-    console.log(startPos);
-    console.log(endPos);
 
     let startNodeHeight = !!startPos.nodeHeight ? startPos.nodeHeight : 0
 

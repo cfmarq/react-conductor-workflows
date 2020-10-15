@@ -24,7 +24,10 @@ exports.Select = function (_a) {
     var _f = react_1.useState(value), selectValue = _f[0], setSelectValue = _f[1];
     react_1.useEffect(function () {
         var selectType = optionList.filter(function (Type) { return Type.rGuid === value; });
-        var selectTypeName = selectType[0].rName;
+        var selectTypeName = "Select";
+        if (selectType[0] !== undefined && selectType[0].rName !== undefined) {
+            selectTypeName = selectType[0].rName;
+        }
         setSelectValue(selectTypeName);
     }, [value]);
     var handleClickOption = function (optionValue) {

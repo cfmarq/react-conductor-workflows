@@ -6,7 +6,6 @@ export interface IFlowChartWithStateProps {
     config?: IConfig;
     getWorkFlowChartValue?: (workFlowValue: any) => void;
     isAllowAddLinkLabel?: boolean;
-    nodeTypeOptions: any[];
     simpleTaskFields: any[];
     tasks: any[];
 }
