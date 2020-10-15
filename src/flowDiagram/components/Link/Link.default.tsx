@@ -6,7 +6,7 @@ import { generateLabelPosition } from '../../utils'
 
 const Label = styled.div`
   position: absolute;
-  width: 120px;
+  width: 80px;
 `
 
 const LabelContent = styled.div`

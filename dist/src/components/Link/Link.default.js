@@ -10,7 +10,7 @@ var styled_components_1 = require("styled-components");
 var __1 = require("../../");
 var generateArrowPath_1 = require("./utils/generateArrowPath");
 var utils_1 = require("../../utils");
-var Label = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: absolute;\n  width: 120px;\n"], ["\n  position: absolute;\n  width: 120px;\n"])));
+var Label = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
 var LabelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
 exports.LinkDefault = function (_a) {
     var config = _a.config, link = _a.link, startPos = _a.startPos, endPos = _a.endPos, onLinkMouseEnter = _a.onLinkMouseEnter, onLinkMouseLeave = _a.onLinkMouseLeave, onLabelDoubleClick = _a.onLabelDoubleClick, onLinkClick = _a.onLinkClick, isHovered = _a.isHovered, isSelected = _a.isSelected, isAllowAddLinkLabel = _a.isAllowAddLinkLabel;

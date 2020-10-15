@@ -12,8 +12,8 @@ export interface IPortDefaultProps {
 }
 
 const PortDefaultInner = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 20px;
   background: #88A5BF;
   cursor: pointer;

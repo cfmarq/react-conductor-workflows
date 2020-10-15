@@ -63,12 +63,12 @@ var PopupSubtitle = styled_components_1.default.div(templateObject_5 || (templat
 var ButtonBox = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"])));
 var InputBox = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"], ["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"])));
 var Input = styled_components_1.default.input(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
-var Label = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  position: absolute;\n  width: 120px;\n"], ["\n  position: absolute;\n  width: 120px;\n"])));
+var Label = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
 var LabelContent = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
-var PortDefaultOuter = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 20px;\n  height: 20px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 20px;\n  height: 20px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
+var PortDefaultOuter = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
 var ProcessQueue = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var SimpleTask = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var SystemTask = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(155, 127, 105);\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SimpleTask = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SystemTask = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  position: absolute;\n  height: 100px;\n  width: 100px;\n  text-align: center;\n  padding-top: 10px;\n  & div {\n    color: white;\n    font-size: 14px;\n  }\n  &:before {\n    position: absolute;\n    content: '';\n    top: 0px;\n    left: 0px;\n    height: 100%;\n    width: 100%;\n    transform: rotateX(45deg) rotateZ(45deg);\n    box-shadow: 0px 0px 12px gray;\n    background: rgb(155, 127, 105);\n    z-index: -1;\n  }\n}\n"], ["\n  position: absolute;\n  height: 100px;\n  width: 100px;\n  text-align: center;\n  padding-top: 10px;\n  & div {\n    color: white;\n    font-size: 14px;\n  }\n  &:before {\n    position: absolute;\n    content: '';\n    top: 0px;\n    left: 0px;\n    height: 100%;\n    width: 100%;\n    transform: rotateX(45deg) rotateZ(45deg);\n    box-shadow: 0px 0px 12px gray;\n    background: rgb(155, 127, 105);\n    z-index: -1;\n  }\n}\n"])));
 var StartPoint = styled_components_1.default.div(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
 var EndPoint = styled_components_1.default.div(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
 var NodeCustom = React.forwardRef(function (_a, ref) {
@@ -111,7 +111,6 @@ var FlowChartWithState = /** @class */ (function (_super) {
             var nodeId = _a.nodeId;
             var clickNodeProperties = _this.state.nodes[nodeId].properties;
             clickNodeProperties = !!clickNodeProperties ? clickNodeProperties : {};
-            console.log(clickNodeProperties);
             _this.setState({
                 modelOption: "editNode",
                 showModelName: "editNodeModel",
@@ -270,7 +269,10 @@ var FlowChartWithState = /** @class */ (function (_super) {
         };
         _this.handleNodeTypeChange = function (value) {
             _this.setState({
-                nodeTypeOption: value
+                nodeTypeOption: value,
+                nodeCaseValueParam: "",
+                nodeInputParameters: "",
+                nodeDefaultExclusiveJoinTask: ""
             });
         };
         _this.handleNodeNameChange = function (value) {
@@ -303,7 +305,6 @@ var FlowChartWithState = /** @class */ (function (_super) {
         _this.renderAddNewNodeModel = function (type, mode) {
             var tasks = _this.props.tasks;
             var nodeEnvVariables = _this.state.nodeEnvVariables;
-            console.log(nodeEnvVariables);
             var simpleTaskOptions = [
                 {
                     rGuid: "SIMPLE",
@@ -337,13 +338,13 @@ var FlowChartWithState = /** @class */ (function (_super) {
                         React.createElement("div", { className: "InputBox" },
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Name"),
-                                React.createElement(element_1.Select, { optionList: tasks, value: tasks[0].rName, onChange: _this.handleNodeNameChange })),
+                                React.createElement(element_1.Select, { optionList: tasks, value: _this.state.nodeName !== "" ? _this.state.nodeName : tasks[0].rGuid, onChange: _this.handleNodeNameChange })),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Task Reference Name"),
                                 React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Type"),
-                                React.createElement(element_1.Select, { optionList: options, value: options[0].rGuid, onChange: _this.handleNodeTypeChange })),
+                                React.createElement(element_1.Select, { optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : options[0].rGuid, onChange: _this.handleNodeTypeChange })),
                             type === "simple-task" &&
                                 (React.createElement(React.Fragment, null,
                                     React.createElement(InputBox, null,

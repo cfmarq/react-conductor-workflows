@@ -124,7 +124,7 @@ const Input = styled.input`
 
 const Label = styled.div`
   position: absolute;
-  width: 120px;
+  width: 80px;
 `
 
 const LabelContent = styled.div`
@@ -140,8 +140,8 @@ const LabelContent = styled.div`
 `
 
 const PortDefaultOuter = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 20px;
   background: #88A5BF;
   cursor: pointer;
@@ -172,10 +172,11 @@ const ProcessQueue = styled.div`
 `
 
 const SimpleTask = styled.div`
-  width: 200px;
-  height: 120px;
+  width: 120px;
+  height: 60px;
   position: absolute;
-  padding: 30px;
+  padding: 15px;
+  font-size: 14px;
   background: #417FA6;
   border-radius: 4px;
   color: white;
@@ -186,16 +187,28 @@ const SimpleTask = styled.div`
 `
 
 const SystemTask = styled.div`
-  width: 200px;
-  height: 120px;
   position: absolute;
-  padding: 30px;
-  background: rgb(155, 127, 105);
-  color: white;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  padding-top: 10px;
   & div {
-    padding: 0px;
-    margin: 0px;
+    color: white;
+    font-size: 14px;
   }
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    transform: rotateX(45deg) rotateZ(45deg);
+    box-shadow: 0px 0px 12px gray;
+    background: rgb(155, 127, 105);
+    z-index: -1;
+  }
+}
 `
 
 const StartPoint = styled.div`
@@ -341,8 +354,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
     let clickNodeProperties = this.state.nodes[nodeId].properties
     clickNodeProperties = !!clickNodeProperties ? clickNodeProperties : {}
-
-    console.log(clickNodeProperties);
 
     this.setState({
       modelOption: "editNode",
@@ -516,7 +527,10 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
   handleNodeTypeChange = (value: string): void => {
     this.setState({
-      nodeTypeOption: value
+      nodeTypeOption: value,
+      nodeCaseValueParam: "",
+      nodeInputParameters: "",
+      nodeDefaultExclusiveJoinTask: ""
     })
   }
   handleNodeNameChange = (value: string): void => {
@@ -556,8 +570,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
     const {tasks} = this.props;
     const {nodeEnvVariables} = this.state;
-    console.log(nodeEnvVariables);
-
 
     const simpleTaskOptions = [
       {
@@ -601,7 +613,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   <label>Name</label>
                   <Select
                     optionList={ tasks }
-                    value={tasks[0].rName}
+                    value={this.state.nodeName!==""?this.state.nodeName:tasks[0].rGuid}
                     onChange={this.handleNodeNameChange}
                     >
                   </Select>
@@ -615,7 +627,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   <label>Type</label>
                   <Select
                     optionList={ options }
-                    value={options[0].rGuid}
+                    value={this.state.nodeTypeOption!==""?this.state.nodeTypeOption:options[0].rGuid}
                     onChange={this.handleNodeTypeChange} >
                   </Select>
               </InputBox>
