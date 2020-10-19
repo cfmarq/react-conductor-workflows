@@ -55,7 +55,6 @@ var actions_1 = require("./container/actions");
 var element_1 = require("./element");
 var _2 = require("./");
 var utils_1 = require("./utils");
-require("./FlowChartWithState.css");
 var ModelBox = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0\n  left: 0\n  background: rgba(9,30,66,.3);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0\n  left: 0\n  background: rgba(9,30,66,.3);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"])));
 var ModelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: fixed;\n  width: 590px;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  padding-left: 35px;\n  overflow: scroll;\n  right: 0;\n  top: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 590px;\n    }\n  }\n"], ["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: fixed;\n  width: 590px;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  padding-left: 35px;\n  overflow: scroll;\n  right: 0;\n  top: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 590px;\n    }\n  }\n"])));
 var PopupHeader = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: 100px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 100px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
@@ -452,22 +451,22 @@ var FlowChartWithState = /** @class */ (function (_super) {
                             type === "system-task" &&
                                 React.createElement(InputBox, null,
                                     React.createElement("label", null, "Name"),
-                                    React.createElement(Input, { className: _this.state.errors.name !== "" ? 'error' : '', onChange: function (e) { return _this.handleNodeNameChange(e.target.value); }, value: _this.state.nodeName, type: "text" }),
+                                    React.createElement(Input, { style: _this.state.errors.name !== "" ? { border: '1px solid #d63831' } : {}, onChange: function (e) { return _this.handleNodeNameChange(e.target.value); }, value: _this.state.nodeName, type: "text" }),
                                     _this.state.errors.name !== "" &&
                                         React.createElement(ErrorLabel, null, _this.state.errors.name)),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Task Reference Name"),
-                                React.createElement(Input, { className: _this.state.errors.taskReferenceName !== "" ? 'error' : '', onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" }),
+                                React.createElement(Input, { style: _this.state.errors.taskReferenceName !== "" ? { border: '1px solid #d63831' } : {}, onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" }),
                                 _this.state.errors.taskReferenceName !== "" &&
                                     React.createElement(ErrorLabel, null, _this.state.errors.taskReferenceName)),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Type"),
-                                React.createElement(element_1.Select, { className: _this.state.errors.typeOption !== "" ? 'error' : '', optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange }),
+                                React.createElement(element_1.Select, { style: _this.state.errors.typeOption !== "" ? { border: '1px solid #d63831' } : {}, optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange }),
                                 _this.state.errors.typeOption !== "" &&
                                     React.createElement(ErrorLabel, null, _this.state.errors.typeOption)),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Input Parameters"),
-                                React.createElement("textarea", { className: _this.state.errors.inputParameters !== "" ? 'error' : '', onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters }),
+                                React.createElement("textarea", { style: _this.state.errors.inputParameters !== "" ? { border: '1px solid #d63831' } : {}, onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters }),
                                 _this.state.errors.inputParameters !== "" &&
                                     React.createElement(ErrorLabel, null, _this.state.errors.inputParameters)),
                             type === "system-task" &&

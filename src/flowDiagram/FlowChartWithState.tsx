@@ -13,7 +13,6 @@ import { INodeDefaultProps, LinkDefault  } from './'
 import { IPortDefaultProps } from './components'
 
 import { generateLabelPosition } from './utils'
-import './FlowChartWithState.css'
 
 const ModelBox = styled.div`
   width: 100%;
@@ -729,7 +728,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
               <InputBox>
                 <label>Name</label>
-                <Input className={this.state.errors.name!==""?'error':''} onChange={(e) => this.handleNodeNameChange(e.target.value)} value={this.state.nodeName} type="text" />
+                <Input style={this.state.errors.name!==""?{border: '1px solid #d63831'}:{}} onChange={(e) => this.handleNodeNameChange(e.target.value)} value={this.state.nodeName} type="text" />
                 {this.state.errors.name!=="" &&
                   <ErrorLabel>{this.state.errors.name}</ErrorLabel>
                 }
@@ -737,7 +736,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               }
               <InputBox>
                 <label>Task Reference Name</label>
-                <Input className={this.state.errors.taskReferenceName!==""?'error':''} onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
+                <Input style={this.state.errors.taskReferenceName!==""?{border: '1px solid #d63831'}:{}} onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
                 {this.state.errors.taskReferenceName!=="" &&
                   <ErrorLabel>{this.state.errors.taskReferenceName}</ErrorLabel>
                 }
@@ -745,7 +744,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               <InputBox>
                   <label>Type</label>
                   <Select
-                    className={this.state.errors.typeOption!==""?'error':''}
+                    style={this.state.errors.typeOption!==""?{border: '1px solid #d63831'}:{}}
                     optionList={ options }
                     value={this.state.nodeTypeOption!==""?this.state.nodeTypeOption:""}
                     onChange={this.handleNodeTypeChange} >
@@ -756,7 +755,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               </InputBox>
               <InputBox>
                 <label>Input Parameters</label>
-                <textarea className={this.state.errors.inputParameters!==""?'error':''} onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} />
+                <textarea style={this.state.errors.inputParameters!==""?{border: '1px solid #d63831'}:{}} onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} />
                 {this.state.errors.inputParameters!=="" &&
                   <ErrorLabel>{this.state.errors.inputParameters}</ErrorLabel>
                 }

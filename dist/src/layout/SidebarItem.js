@@ -31,7 +31,7 @@ var Outer = styled_components_1.default.div(templateObject_1 || (templateObject_
             if (!!itemStyle) {
                 return "&.system-task " + itemStyle;
             }
-            return "\n          &.system-task {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            background: rgb(155, 127, 105);\n            box-shadow: 0px 0px 12px gray;\n            padding: 0;\n            border-radius: 50%\n          }\n        ";
+            return "\n          &.system-task {\n            width: 120px;\n            height: 60px;\n            line-height: 60px;\n            text-align: center;\n            background: rgb(155, 127, 105);\n            padding: 0;\n            border-radius: 50%\n          }\n        ";
         case "end":
             if (!!itemStyle) {
                 return "&.end " + itemStyle;

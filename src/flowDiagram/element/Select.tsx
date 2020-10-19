@@ -119,7 +119,7 @@ export interface ISelectProps {
     value: string
     onChange: (e: string) => void
     children?: any
-    className?: any
+    style?: any
 }
 
 export const Select = ({ optionList = [], value, onChange }: ISelectProps) => {

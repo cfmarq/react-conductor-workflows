@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IChart, IConfig, IFlowChartComponents, IOnNodeDoubleClick, IOnLabelDoubleClick } from './';
-import './FlowChartWithState.css';
 export interface IFlowChartWithStateProps {
     initialValue: IChart;
     Components?: IFlowChartComponents;
