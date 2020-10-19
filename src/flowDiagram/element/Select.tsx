@@ -32,9 +32,9 @@ const SelectHeader = styled.div`
   cursor: pointer;
   overflow: hidden;
 
-  &:hover {
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-    border: 1px solid #10a9ff;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px #244e74;
   }
 `
 
@@ -74,7 +74,7 @@ const SelectBody = styled.div`
   z-index: 101;
   font-size: 14px;
   border-radius: 5px;
-  border: 1px solid #eee;
+  border: 1px solid #88A5BF;
   position: absolute;
   top: 40px;
   overflow-y: auto;
@@ -86,7 +86,7 @@ const SelectBody = styled.div`
 
   &::-webkit-scrollbar {
     width: 5px;
-    background-color: #eee;
+    background-color: #88A5BF;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -119,6 +119,7 @@ export interface ISelectProps {
     value: string
     onChange: (e: string) => void
     children?: any
+    className?: any
 }
 
 export const Select = ({ optionList = [], value, onChange }: ISelectProps) => {

@@ -13,6 +13,7 @@ import { INodeDefaultProps, LinkDefault  } from './'
 import { IPortDefaultProps } from './components'
 
 import { generateLabelPosition } from './utils'
+import './FlowChartWithState.css'
 
 const ModelBox = styled.div`
   width: 100%;
@@ -110,15 +111,24 @@ const InputBox = styled.div`
     padding-left: 0.5rem;
     border: 1px solid #88A5BF;
     border-radius: 8px;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 1px 1px #244e74;
+    }
   }
 
   & textarea {
+    font-size: 14px;
     padding: 10px;
     height: 100px;
-    width: 300px !important;
+    width: 300px;
+    padding-left: 0.5rem;
     border: 1px solid #88A5BF;
     border-radius: 8px;
-    width: 100%;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 1px 1px #244e74;
+    }
   }
 `
 
@@ -133,6 +143,10 @@ const Input = styled.input`
 const Label = styled.div`
   position: absolute;
   width: 80px;
+`
+const ErrorLabel = styled.div`
+  color: #d63831;
+  font-size: 12px;
 `
 
 const LabelContent = styled.div`
@@ -366,6 +380,12 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       modelOption: "addNode",
       alertMessageInfo: "",
       alertMessageStatus: "init",
+      errors: {
+        name: "",
+        taskReferenceName: "",
+        inputParameters: "",
+        typeOption: ""
+      }
     }
 
   }
@@ -436,6 +456,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
   }
 
   handleCancelEditNode = () => {
+    this.clearErrors()
+
     if (this.state.modelOption === "addNode") {
 
       let _newNodeId = this.state.newNodeId
@@ -502,30 +524,57 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     });
   }
 
+  clearErrors = () => {
+    this.setState({
+      errors: {
+        name: "",
+        taskReferenceName: "",
+        inputParameters: "",
+        typeOption: ""
+      }
+    })
+  }
+
   setNodeInfo = (): boolean => {
     // console.log("nodeName: ", this.state.nodeName)
+
+    var gotErrors = false;
+    var errors = {
+      name: "",
+      taskReferenceName: "",
+      inputParameters: "",
+      typeOption: ""
+    };
+
     if (this.state.nodeName.trim() === "") {
-      this.warningMessage("Name field is required")
-      return false
+      errors.name = "Name field is required";
+      this.setState({errors: errors})
+      gotErrors = true
     }
     if (this.state.nodeTaskReferenceName.trim() === "") {
-      this.warningMessage("Task reference name field is required")
-      return false
+      errors.taskReferenceName = "Task reference name field is required";
+      this.setState({errors: errors})
+      gotErrors = true
     }
     if (this.state.nodeTypeOption.trim() === "") {
-      this.warningMessage("Node type field is required")
-      return false
+      errors.typeOption = "Node type field is required";
+      this.setState({errors: errors})
+      gotErrors = true
     }
-    if (this.state.nodeInputParameters.trim() === "") {
-      this.warningMessage("Input parameters field is required")
-      return false
-    }
+    // if (this.state.nodeInputParameters.trim() === "") {
+    //   errors.inputParameters = "Input parameters field is required";
+    //   this.setState({errors: errors})
+    //   gotErrors = true
+    // }
     try {
-        JSON.parse(this.state.nodeInputParameters);
+      JSON.parse(this.state.nodeInputParameters);
     } catch (e) {
-      this.warningMessage("Input parameters field should receive a valid JSON")
-        return false;
+      errors.inputParameters = "Input parameters field should receive a valid JSON";
+      this.setState({errors: errors})
+      gotErrors = true;
     }
+    if (gotErrors)
+      return false;
 
     //
     // if (this.state.nodeTypeOption === "DECISION") {
@@ -591,8 +640,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     })
   }
   handleNodeNameChange = (value: string): void => {
-    console.log(value);
-
     this.setState({
       nodeName: value
     })
@@ -681,26 +728,38 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               {type === "system-task" &&
 
               <InputBox>
-              {console.log(this.state)}
                 <label>Name</label>
-                <Input onChange={(e) => this.handleNodeNameChange(e.target.value)} value={this.state.nodeName} type="text" />
+                <Input className={this.state.errors.name!==""?'error':''} onChange={(e) => this.handleNodeNameChange(e.target.value)} value={this.state.nodeName} type="text" />
+                {this.state.errors.name!=="" &&
+                  <ErrorLabel>{this.state.errors.name}</ErrorLabel>
+                }
               </InputBox>
               }
               <InputBox>
                 <label>Task Reference Name</label>
-                <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
+                <Input className={this.state.errors.taskReferenceName!==""?'error':''} onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
+                {this.state.errors.taskReferenceName!=="" &&
+                  <ErrorLabel>{this.state.errors.taskReferenceName}</ErrorLabel>
+                }
               </InputBox>
               <InputBox>
                   <label>Type</label>
                   <Select
+                    className={this.state.errors.typeOption!==""?'error':''}
                     optionList={ options }
                     value={this.state.nodeTypeOption!==""?this.state.nodeTypeOption:""}
                     onChange={this.handleNodeTypeChange} >
                   </Select>
+                  {this.state.errors.typeOption!=="" &&
+                    <ErrorLabel>{this.state.errors.typeOption}</ErrorLabel>
+                  }
               </InputBox>
               <InputBox>
                 <label>Input Parameters</label>
-                <textarea onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} />
+                <textarea className={this.state.errors.inputParameters!==""?'error':''} onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} />
+                {this.state.errors.inputParameters!=="" &&
+                  <ErrorLabel>{this.state.errors.inputParameters}</ErrorLabel>
+                }
               </InputBox>
 
               {type === "system-task" &&

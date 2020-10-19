@@ -11,7 +11,6 @@ const CustomInput = styled.input`
   font-size: 14px;
 
   &:focus {
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
     border: 1px solid #88A5BF;
   }
 `

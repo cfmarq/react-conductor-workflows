@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IChart, IConfig, IFlowChartComponents, IOnNodeDoubleClick, IOnLabelDoubleClick } from './';
+import './FlowChartWithState.css';
 export interface IFlowChartWithStateProps {
     initialValue: IChart;
     Components?: IFlowChartComponents;
@@ -26,6 +27,7 @@ export declare class FlowChartWithState extends React.Component<IFlowChartWithSt
     handleCaseValueParamInput: (e: any) => void;
     handleDefaultExclusiveJoinTaskInput: (e: any) => void;
     handleLinkDescriptionInput: (e: any) => void;
+    clearErrors: () => void;
     setNodeInfo: () => boolean;
     setLinkInfo: () => void;
     handleNodeTypeChange: (value: string) => void;

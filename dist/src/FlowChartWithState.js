@@ -55,20 +55,22 @@ var actions_1 = require("./container/actions");
 var element_1 = require("./element");
 var _2 = require("./");
 var utils_1 = require("./utils");
+require("./FlowChartWithState.css");
 var ModelBox = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0\n  left: 0\n  background: rgba(9,30,66,.3);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"], ["\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0\n  left: 0\n  background: rgba(9,30,66,.3);\n  z-index: 99;\n\n  &.hide {\n    display: none;\n  }\n"])));
 var ModelContent = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: fixed;\n  width: 590px;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  padding-left: 35px;\n  overflow: scroll;\n  right: 0;\n  top: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 590px;\n    }\n  }\n"], ["\n  animation-duration: 1s;\n  animation-name: slidein;\n  position: fixed;\n  width: 590px;\n  height: 100vh;\n  background: #fff;\n  float: right;\n  padding-left: 35px;\n  overflow: scroll;\n  right: 0;\n  top: 0;\n\n  @keyframes slidein {\n    from {\n      width: 20%;\n    }\n\n    to {\n      width: 590px;\n    }\n  }\n"])));
 var PopupHeader = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: 100px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 100px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var PopupSubHeader = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding: 10px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 10px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var PopupSubtitle = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 20px 10px 0px 15px;\n  font-size: 14px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 20px 10px 0px 15px;\n  font-size: 14px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var ButtonBox = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"])));
-var InputBox = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n\n  & textarea {\n    padding: 10px;\n    height: 100px;\n    width: 300px !important;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    width: 100%;\n  }\n"], ["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n\n  & textarea {\n    padding: 10px;\n    height: 100px;\n    width: 300px !important;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    width: 100%;\n  }\n"])));
+var InputBox = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"], ["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"])));
 var Input = styled_components_1.default.input(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
 var Label = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
-var LabelContent = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
-var PortDefaultOuter = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
-var ProcessQueue = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var SimpleTask = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var SystemTask = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"
+var ErrorLabel = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  color: #d63831;\n  font-size: 12px;\n"], ["\n  color: #d63831;\n  font-size: 12px;\n"])));
+var LabelContent = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
+var PortDefaultOuter = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
+var ProcessQueue = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SimpleTask = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SystemTask = styled_components_1.default.div(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"
     // const SystemTask = styled.div`
     //   position: absolute;
     //   height: 100px;
@@ -118,8 +120,8 @@ var SystemTask = styled_components_1.default.div(templateObject_14 || (templateO
 //   }
 // }
 // `
-var StartPoint = styled_components_1.default.div(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
-var EndPoint = styled_components_1.default.div(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
+var StartPoint = styled_components_1.default.div(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
+var EndPoint = styled_components_1.default.div(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
 var NodeCustom = React.forwardRef(function (_a, ref) {
     var node = _a.node, children = _a.children, otherProps = __rest(_a, ["node", "children"]);
     switch (node.type) {
@@ -220,6 +222,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
             });
         };
         _this.handleCancelEditNode = function () {
+            _this.clearErrors();
             if (_this.state.modelOption === "addNode") {
                 var _newNodeId_1 = _this.state.newNodeId;
                 var _nodes_1 = {};
@@ -274,31 +277,55 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 linkLabel: e.currentTarget.value
             });
         };
+        _this.clearErrors = function () {
+            _this.setState({
+                errors: {
+                    name: "",
+                    taskReferenceName: "",
+                    inputParameters: "",
+                    typeOption: ""
+                }
+            });
+        };
         _this.setNodeInfo = function () {
             // console.log("nodeName: ", this.state.nodeName)
+            var gotErrors = false;
+            var errors = {
+                name: "",
+                taskReferenceName: "",
+                inputParameters: "",
+                typeOption: ""
+            };
             if (_this.state.nodeName.trim() === "") {
-                _this.warningMessage("Name field is required");
-                return false;
+                errors.name = "Name field is required";
+                _this.setState({ errors: errors });
+                gotErrors = true;
             }
             if (_this.state.nodeTaskReferenceName.trim() === "") {
-                _this.warningMessage("Task reference name field is required");
-                return false;
+                errors.taskReferenceName = "Task reference name field is required";
+                _this.setState({ errors: errors });
+                gotErrors = true;
             }
             if (_this.state.nodeTypeOption.trim() === "") {
-                _this.warningMessage("Node type field is required");
-                return false;
+                errors.typeOption = "Node type field is required";
+                _this.setState({ errors: errors });
+                gotErrors = true;
             }
-            if (_this.state.nodeInputParameters.trim() === "") {
-                _this.warningMessage("Input parameters field is required");
-                return false;
-            }
+            // if (this.state.nodeInputParameters.trim() === "") {
+            //   errors.inputParameters = "Input parameters field is required";
+            //   this.setState({errors: errors})
+            //   gotErrors = true
+            // }
             try {
                 JSON.parse(_this.state.nodeInputParameters);
             }
             catch (e) {
-                _this.warningMessage("Input parameters field should receive a valid JSON");
-                return false;
+                errors.inputParameters = "Input parameters field should receive a valid JSON";
+                _this.setState({ errors: errors });
+                gotErrors = true;
             }
+            if (gotErrors)
+                return false;
             //
             // if (this.state.nodeTypeOption === "DECISION") {
             //   if (this.state.nodeCaseValueParam.trim() === "") {
@@ -358,7 +385,6 @@ var FlowChartWithState = /** @class */ (function (_super) {
             });
         };
         _this.handleNodeNameChange = function (value) {
-            console.log(value);
             _this.setState({
                 nodeName: value
             });
@@ -425,18 +451,25 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                     React.createElement(element_1.Select, { optionList: tasks, value: _this.state.nodeName !== "" ? _this.state.nodeName : "", onChange: _this.handleNodeNameChange })),
                             type === "system-task" &&
                                 React.createElement(InputBox, null,
-                                    console.log(_this.state),
                                     React.createElement("label", null, "Name"),
-                                    React.createElement(Input, { onChange: function (e) { return _this.handleNodeNameChange(e.target.value); }, value: _this.state.nodeName, type: "text" })),
+                                    React.createElement(Input, { className: _this.state.errors.name !== "" ? 'error' : '', onChange: function (e) { return _this.handleNodeNameChange(e.target.value); }, value: _this.state.nodeName, type: "text" }),
+                                    _this.state.errors.name !== "" &&
+                                        React.createElement(ErrorLabel, null, _this.state.errors.name)),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Task Reference Name"),
-                                React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
+                                React.createElement(Input, { className: _this.state.errors.taskReferenceName !== "" ? 'error' : '', onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" }),
+                                _this.state.errors.taskReferenceName !== "" &&
+                                    React.createElement(ErrorLabel, null, _this.state.errors.taskReferenceName)),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Type"),
-                                React.createElement(element_1.Select, { optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange })),
+                                React.createElement(element_1.Select, { className: _this.state.errors.typeOption !== "" ? 'error' : '', optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange }),
+                                _this.state.errors.typeOption !== "" &&
+                                    React.createElement(ErrorLabel, null, _this.state.errors.typeOption)),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Input Parameters"),
-                                React.createElement("textarea", { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters })),
+                                React.createElement("textarea", { className: _this.state.errors.inputParameters !== "" ? 'error' : '', onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters }),
+                                _this.state.errors.inputParameters !== "" &&
+                                    React.createElement(ErrorLabel, null, _this.state.errors.inputParameters)),
                             type === "system-task" &&
                                 (React.createElement(React.Fragment, null,
                                     _this.state.nodeTypeOption === "DECISION" &&
@@ -500,7 +533,12 @@ var FlowChartWithState = /** @class */ (function (_super) {
         _this.renderAlertMessage = function () {
             return (React.createElement(element_1.Message, { errorInfo: _this.state.alertMessageInfo, alertMessageStatus: _this.state.alertMessageStatus }));
         };
-        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeEnvVariables: [], nodeId: "", nodeTaskReferenceName: "", nodeInputParameters: "", nodeCaseValueParam: "", nodeDefaultExclusiveJoinTask: "", nodeTypeOption: "", nodeSchema: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init" });
+        _this.state = __assign(__assign({}, props.initialValue), { preNodes: Object.keys(props.initialValue.nodes), preLinks: Object.keys(props.initialValue.links), isModelShow: false, showModelName: "", nodeName: "", nodeEnvVariables: [], nodeId: "", nodeTaskReferenceName: "", nodeInputParameters: "", nodeCaseValueParam: "", nodeDefaultExclusiveJoinTask: "", nodeTypeOption: "", nodeSchema: "", linkLabel: "", newNodeId: "", clickNodeId: "", newLinkId: "", clickLinkId: "", modelOption: "addNode", alertMessageInfo: "", alertMessageStatus: "init", errors: {
+                name: "",
+                taskReferenceName: "",
+                inputParameters: "",
+                typeOption: ""
+            } });
         return _this;
     }
     FlowChartWithState.prototype.componentDidUpdate = function () {
@@ -583,5 +621,5 @@ var FlowChartWithState = /** @class */ (function (_super) {
     return FlowChartWithState;
 }(React.Component));
 exports.FlowChartWithState = FlowChartWithState;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17;
 //# sourceMappingURL=FlowChartWithState.js.map

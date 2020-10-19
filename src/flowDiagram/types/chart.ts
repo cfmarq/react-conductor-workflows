@@ -25,6 +25,7 @@ export interface IChart {
   nodeSchema: string
   nodeEnvVariables: any
   nodeTypeOption: string
+  errors: any
   linkLabel: string
   newNodeId: string
   newLinkId: string

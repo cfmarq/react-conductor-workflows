@@ -79,6 +79,7 @@ const Outer = styled.div<IOuterProps>`
             line-height: 60px;
             text-align: center;
             background: rgb(155, 127, 105);
+            box-shadow: 0px 0px 12px gray;
             padding: 0;
             border-radius: 50%
           }
