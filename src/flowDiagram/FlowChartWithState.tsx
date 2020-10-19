@@ -93,8 +93,6 @@ const ButtonBox =styled.div`
 
 const InputBox = styled.div`
   font-size: 20px;
-  align-items: center;
-  justify-content: center;
   margin: 20px 0 30px 0;
   padding: 0 1rem;
 
@@ -109,15 +107,24 @@ const InputBox = styled.div`
     font-size: 14px;
     display:block;
     width: 300px;
-    height: 40px;
     padding-left: 0.5rem;
     border: 1px solid #88A5BF;
     border-radius: 8px;
+  }
+
+  & textarea {
+    padding: 10px;
+    height: 100px;
+    width: 300px !important;
+    border: 1px solid #88A5BF;
+    border-radius: 8px;
+    width: 100%;
   }
 `
 
 const Input = styled.input`
   padding: 10px;
+  height: 40px;
   border: 1px solid #88A5BF;
   border-radius: 8px;
   width: 100%;
@@ -519,18 +526,20 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       this.warningMessage("Input parameters field should receive a valid JSON")
         return false;
     }
-    if (this.state.nodeTypeOption === "DECISION") {
-      if (this.state.nodeCaseValueParam.trim() === "") {
-        this.warningMessage("Case value param field is required")
-        return false
-      }
-    }
-    if (this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
-      if (this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
-        this.warningMessage("Default exclusive join task field is required")
-        return false
-      }
-    }
+
+    //
+    // if (this.state.nodeTypeOption === "DECISION") {
+    //   if (this.state.nodeCaseValueParam.trim() === "") {
+    //     this.warningMessage("Case value param field is required")
+    //     return false
+    //   }
+    // }
+    // if (this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
+    //   if (this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
+    //     this.warningMessage("Default exclusive join task field is required")
+    //     return false
+    //   }
+    // }
 
 
     let _nodes = this.state.nodes;
@@ -582,6 +591,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     })
   }
   handleNodeNameChange = (value: string): void => {
+    console.log(value);
+
     this.setState({
       nodeName: value
     })
@@ -656,7 +667,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               }
             </PopupHeader>
             <div className="InputBox">
-              <InputBox>
+              {type === "simple-task" &&
+                <InputBox>
                   <label>Name</label>
                   <Select
                     optionList={ tasks }
@@ -664,7 +676,16 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                     onChange={this.handleNodeNameChange}
                     >
                   </Select>
+                </InputBox>
+              }
+              {type === "system-task" &&
+
+              <InputBox>
+              {console.log(this.state)}
+                <label>Name</label>
+                <Input onChange={(e) => this.handleNodeNameChange(e.target.value)} value={this.state.nodeName} type="text" />
               </InputBox>
+              }
               <InputBox>
                 <label>Task Reference Name</label>
                 <Input onChange={this.handleTaskReferenceNameInput} value={this.state.nodeTaskReferenceName} type="text" />
@@ -679,8 +700,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
               </InputBox>
               <InputBox>
                 <label>Input Parameters</label>
-                <Input onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} type="text" />
+                <textarea onChange={this.handleInputParametersInput} value={this.state.nodeInputParameters} />
               </InputBox>
+
               {type === "system-task" &&
               (
                 <>
@@ -700,32 +722,35 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   )}
                 </>
               )}
-              <PopupSubHeader>
-                Environment variables
-              </PopupSubHeader>
-
-              {nodeEnvVariables.map( (item: any, i: any) => {
-                return (
+              {type === "simple-task" &&
                 <>
-                  { i>0 &&
-                    <><hr style={{ width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 }} /></>
-                  }
-                  <PopupSubtitle>Variable {i+1}</PopupSubtitle>
-                  <InputBox>
-                    <label>Key</label>
-                    <Input onChange={(value) => this.handleEnvKey(value, i)} value={item.key} type="text" />
-                  </InputBox>
-                  <InputBox>
-                    <label>Value</label>
-                    <Input onChange={(value) => this.handleEnvValue(value, i)} value={item.value} type="text" />
-                  </InputBox>
-                  <Button onClick={() => this.removeVariable(i)} type="remove">Remove Variable</Button>
+                  <PopupSubHeader>
+                    Environment variables
+                  </PopupSubHeader>
+
+                  {nodeEnvVariables.map( (item: any, i: any) => {
+                    return (
+                    <>
+                      { i>0 &&
+                        <><hr style={{ width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 }} /></>
+                      }
+                      <PopupSubtitle>Variable {i+1}</PopupSubtitle>
+                      <InputBox>
+                        <label>Key</label>
+                        <Input onChange={(value) => this.handleEnvKey(value, i)} value={item.key} type="text" />
+                      </InputBox>
+                      <InputBox>
+                        <label>Value</label>
+                        <Input onChange={(value) => this.handleEnvValue(value, i)} value={item.value} type="text" />
+                      </InputBox>
+                      <Button onClick={() => this.removeVariable(i)} type="remove">Remove Variable</Button>
+                    </>
+                    )
+                  })}
+
+                  <Button onClick={this.handleAddEnvVariable} type="secondary">Add Variable</Button>
                 </>
-                )
-              })}
-
-              <Button onClick={this.handleAddEnvVariable} type="secondary">Add Variable</Button>
-
+              }
             </div>
             <ButtonBox>
               <Button onClick={this.setNodeInfo} type="primary">Confirm</Button>

@@ -61,8 +61,8 @@ var PopupHeader = styled_components_1.default.div(templateObject_3 || (templateO
 var PopupSubHeader = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding: 10px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 10px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var PopupSubtitle = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 20px 10px 0px 15px;\n  font-size: 14px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 20px 10px 0px 15px;\n  font-size: 14px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var ButtonBox = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"])));
-var InputBox = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"], ["\n  font-size: 20px;\n  align-items: center;\n  justify-content: center;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    height: 40px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n"])));
-var Input = styled_components_1.default.input(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
+var InputBox = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n\n  & textarea {\n    padding: 10px;\n    height: 100px;\n    width: 300px !important;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    width: 100%;\n  }\n"], ["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n  }\n\n  & textarea {\n    padding: 10px;\n    height: 100px;\n    width: 300px !important;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    width: 100%;\n  }\n"])));
+var Input = styled_components_1.default.input(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
 var Label = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
 var LabelContent = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
 var PortDefaultOuter = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
@@ -299,18 +299,19 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 _this.warningMessage("Input parameters field should receive a valid JSON");
                 return false;
             }
-            if (_this.state.nodeTypeOption === "DECISION") {
-                if (_this.state.nodeCaseValueParam.trim() === "") {
-                    _this.warningMessage("Case value param field is required");
-                    return false;
-                }
-            }
-            if (_this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
-                if (_this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
-                    _this.warningMessage("Default exclusive join task field is required");
-                    return false;
-                }
-            }
+            //
+            // if (this.state.nodeTypeOption === "DECISION") {
+            //   if (this.state.nodeCaseValueParam.trim() === "") {
+            //     this.warningMessage("Case value param field is required")
+            //     return false
+            //   }
+            // }
+            // if (this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
+            //   if (this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
+            //     this.warningMessage("Default exclusive join task field is required")
+            //     return false
+            //   }
+            // }
             var _nodes = _this.state.nodes;
             var _nodeId = _this.state.modelOption === "addNode" ? _this.state.newNodeId : _this.state.clickNodeId;
             _nodes[_nodeId].properties = {
@@ -357,6 +358,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
             });
         };
         _this.handleNodeNameChange = function (value) {
+            console.log(value);
             _this.setState({
                 nodeName: value
             });
@@ -417,9 +419,15 @@ var FlowChartWithState = /** @class */ (function (_super) {
                             :
                                 React.createElement(React.Fragment, null, "Edit element")),
                         React.createElement("div", { className: "InputBox" },
-                            React.createElement(InputBox, null,
-                                React.createElement("label", null, "Name"),
-                                React.createElement(element_1.Select, { optionList: tasks, value: _this.state.nodeName !== "" ? _this.state.nodeName : "", onChange: _this.handleNodeNameChange })),
+                            type === "simple-task" &&
+                                React.createElement(InputBox, null,
+                                    React.createElement("label", null, "Name"),
+                                    React.createElement(element_1.Select, { optionList: tasks, value: _this.state.nodeName !== "" ? _this.state.nodeName : "", onChange: _this.handleNodeNameChange })),
+                            type === "system-task" &&
+                                React.createElement(InputBox, null,
+                                    console.log(_this.state),
+                                    React.createElement("label", null, "Name"),
+                                    React.createElement(Input, { onChange: function (e) { return _this.handleNodeNameChange(e.target.value); }, value: _this.state.nodeName, type: "text" })),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Task Reference Name"),
                                 React.createElement(Input, { onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" })),
@@ -428,7 +436,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                 React.createElement(element_1.Select, { optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange })),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Input Parameters"),
-                                React.createElement(Input, { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters, type: "text" })),
+                                React.createElement("textarea", { onChange: _this.handleInputParametersInput, value: _this.state.nodeInputParameters })),
                             type === "system-task" &&
                                 (React.createElement(React.Fragment, null,
                                     _this.state.nodeTypeOption === "DECISION" &&
@@ -439,24 +447,26 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                         (React.createElement(InputBox, null,
                                             React.createElement("label", null, "Default Exclusive Join Task"),
                                             React.createElement(Input, { onChange: _this.handleDefaultExclusiveJoinTaskInput, value: _this.state.nodeDefaultExclusiveJoinTask, type: "text" }))))),
-                            React.createElement(PopupSubHeader, null, "Environment variables"),
-                            nodeEnvVariables.map(function (item, i) {
-                                return (React.createElement(React.Fragment, null,
-                                    i > 0 &&
-                                        React.createElement(React.Fragment, null,
-                                            React.createElement("hr", { style: { width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 } })),
-                                    React.createElement(PopupSubtitle, null,
-                                        "Variable ",
-                                        i + 1),
-                                    React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Key"),
-                                        React.createElement(Input, { onChange: function (value) { return _this.handleEnvKey(value, i); }, value: item.key, type: "text" })),
-                                    React.createElement(InputBox, null,
-                                        React.createElement("label", null, "Value"),
-                                        React.createElement(Input, { onChange: function (value) { return _this.handleEnvValue(value, i); }, value: item.value, type: "text" })),
-                                    React.createElement(element_1.Button, { onClick: function () { return _this.removeVariable(i); }, type: "remove" }, "Remove Variable")));
-                            }),
-                            React.createElement(element_1.Button, { onClick: _this.handleAddEnvVariable, type: "secondary" }, "Add Variable")),
+                            type === "simple-task" &&
+                                React.createElement(React.Fragment, null,
+                                    React.createElement(PopupSubHeader, null, "Environment variables"),
+                                    nodeEnvVariables.map(function (item, i) {
+                                        return (React.createElement(React.Fragment, null,
+                                            i > 0 &&
+                                                React.createElement(React.Fragment, null,
+                                                    React.createElement("hr", { style: { width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 } })),
+                                            React.createElement(PopupSubtitle, null,
+                                                "Variable ",
+                                                i + 1),
+                                            React.createElement(InputBox, null,
+                                                React.createElement("label", null, "Key"),
+                                                React.createElement(Input, { onChange: function (value) { return _this.handleEnvKey(value, i); }, value: item.key, type: "text" })),
+                                            React.createElement(InputBox, null,
+                                                React.createElement("label", null, "Value"),
+                                                React.createElement(Input, { onChange: function (value) { return _this.handleEnvValue(value, i); }, value: item.value, type: "text" })),
+                                            React.createElement(element_1.Button, { onClick: function () { return _this.removeVariable(i); }, type: "remove" }, "Remove Variable")));
+                                    }),
+                                    React.createElement(element_1.Button, { onClick: _this.handleAddEnvVariable, type: "secondary" }, "Add Variable"))),
                         React.createElement(ButtonBox, null,
                             React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
                             React.createElement(element_1.Button, { onClick: _this.handleCancelEditNode, type: "cancel" }, "Cancel"))))));
