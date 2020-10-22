@@ -12,8 +12,8 @@ export interface IPortDefaultProps {
 }
 
 const PortDefaultInner = styled.div`
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 20px;
   background: #88A5BF;
   cursor: pointer;
@@ -25,8 +25,8 @@ const PortDefaultInner = styled.div`
     background: #88A5BF;
   }
   & svg {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
   }
 `
 

@@ -75,7 +75,7 @@ export const LinkDefault = ({
           <path
             d={arrow}
             stroke="#88A5BF"
-            strokeWidth="3"
+            strokeWidth="0"
             fill="#88A5BF"
           />
           {/* Thick line to make selection easier */}
@@ -129,7 +129,7 @@ export const LinkDefault = ({
         <path
           d={arrow}
           stroke="#88A5BF"
-          strokeWidth="3"
+          strokeWidth="0"
           fill="#88A5BF"
         />
         {/* Thick line to make selection easier */}

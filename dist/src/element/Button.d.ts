@@ -1,6 +1,6 @@
 /// <reference types="react" />
 export interface IButtonProps {
-    children?: string;
+    children?: any;
     type?: string;
     onClick: (e: any) => void;
 }

@@ -23,7 +23,7 @@ exports.LinkDefault = function (_a) {
             React.createElement("svg", { style: { overflow: 'visible', position: 'absolute', cursor: 'pointer', left: 0, right: 0 } },
                 React.createElement("circle", { r: "4", cx: startPos.x, cy: startPos.y, fill: "#88A5BF" }),
                 React.createElement("path", { d: points, stroke: "#88A5BF", strokeWidth: "3", fill: "none" }),
-                React.createElement("path", { d: arrow, stroke: "#88A5BF", strokeWidth: "3", fill: "#88A5BF" }),
+                React.createElement("path", { d: arrow, stroke: "#88A5BF", strokeWidth: "0", fill: "#88A5BF" }),
                 React.createElement("path", { d: points, stroke: "#88A5BF", strokeWidth: "20", fill: "none", strokeLinecap: "round", strokeOpacity: (isHovered || isSelected) ? 0.1 : 0, onMouseEnter: function () { return onLinkMouseEnter({ config: config, linkId: link.id }); }, onMouseLeave: function () { return onLinkMouseLeave({ config: config, linkId: link.id }); }, onDoubleClick: function () { return onLabelDoubleClick({ linkId: link.id }); }, onClick: function (e) {
                         onLinkClick({ config: config, linkId: link.id });
                         e.stopPropagation();
@@ -35,7 +35,7 @@ exports.LinkDefault = function (_a) {
         return (React.createElement("svg", { style: { overflow: 'visible', position: 'absolute', cursor: 'pointer', left: 0, right: 0 } },
             React.createElement("circle", { r: "4", cx: startPos.x, cy: startPos.y, fill: "#88A5BF" }),
             React.createElement("path", { d: points, stroke: "#88A5BF", strokeWidth: "3", fill: "none" }),
-            React.createElement("path", { d: arrow, stroke: "#88A5BF", strokeWidth: "3", fill: "#88A5BF" }),
+            React.createElement("path", { d: arrow, stroke: "#88A5BF", strokeWidth: "0", fill: "#88A5BF" }),
             React.createElement("path", { d: points, stroke: "#88A5BF", strokeWidth: "20", fill: "none", strokeLinecap: "round", strokeOpacity: (isHovered || isSelected) ? 0.1 : 0, onMouseEnter: function () { return onLinkMouseEnter({ config: config, linkId: link.id }); }, onMouseLeave: function () { return onLinkMouseLeave({ config: config, linkId: link.id }); }, onDoubleClick: function () { return onLabelDoubleClick({ linkId: link.id }); }, onClick: function (e) {
                     onLinkClick({ config: config, linkId: link.id });
                     e.stopPropagation();

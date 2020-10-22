@@ -91,6 +91,16 @@ const ButtonBox =styled.div`
   cursor: pointer;
 `
 
+const RemoveIcon = styled.div`
+  background-image : url(/public/remove.svg);
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  top: 5px;
+`
+
 const InputBox = styled.div`
   font-size: 20px;
   margin: 20px 0 30px 0;
@@ -161,8 +171,8 @@ const LabelContent = styled.div`
 `
 
 const PortDefaultOuter = styled.div`
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 20px;
   background: #88A5BF;
   cursor: pointer;
@@ -173,8 +183,8 @@ const PortDefaultOuter = styled.div`
     background: #88A5BF;
   }
   & svg {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
   }
 `
 
@@ -383,7 +393,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         name: "",
         taskReferenceName: "",
         inputParameters: "",
-        typeOption: ""
+        typeOption: "",
+        envVariables: ""
       }
     }
 
@@ -529,7 +540,8 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         name: "",
         taskReferenceName: "",
         inputParameters: "",
-        typeOption: ""
+        typeOption: "",
+        envVariables: ""
       }
     })
   }
@@ -542,11 +554,18 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       name: "",
       taskReferenceName: "",
       inputParameters: "",
-      typeOption: ""
+      typeOption: "",
+      envVariables: ""
     };
 
     if (this.state.nodeName.trim() === "") {
       errors.name = "Name field is required";
+      this.setState({errors: errors})
+      gotErrors = true
+    }
+
+    if (!(/^[a-z0-9-]+$/i).test(this.state.nodeTaskReferenceName)) {
+      errors.taskReferenceName = "Task reference name field only accepts values containing alphanumeric elements and '-'";
       this.setState({errors: errors})
       gotErrors = true
     }
@@ -560,35 +579,23 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       this.setState({errors: errors})
       gotErrors = true
     }
-    // if (this.state.nodeInputParameters.trim() === "") {
-    //   errors.inputParameters = "Input parameters field is required";
-    //   this.setState({errors: errors})
-    //   gotErrors = true
-    // }
-    try {
-      JSON.parse(this.state.nodeInputParameters);
-    } catch (e) {
-      errors.inputParameters = "Input parameters field should receive a valid JSON";
-      this.setState({errors: errors})
-      gotErrors = true;
+    if (this.state.nodeInputParameters.trim() !== "") {
+      try {
+        JSON.parse(this.state.nodeInputParameters);
+      } catch (e) {
+        errors.inputParameters = "Input parameters field should receive a valid JSON";
+        this.setState({errors: errors})
+        gotErrors = true;
+      }
     }
+    if (this.state.nodeEnvVariables[0] === undefined || this.state.nodeEnvVariables[0].trim() === "") {
+      errors.envVariables = "Environment variables field is required";
+      this.setState({errors: errors})
+      gotErrors = true
+    }
+
     if (gotErrors)
       return false;
-
-    //
-    // if (this.state.nodeTypeOption === "DECISION") {
-    //   if (this.state.nodeCaseValueParam.trim() === "") {
-    //     this.warningMessage("Case value param field is required")
-    //     return false
-    //   }
-    // }
-    // if (this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
-    //   if (this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
-    //     this.warningMessage("Default exclusive join task field is required")
-    //     return false
-    //   }
-    // }
-
 
     let _nodes = this.state.nodes;
 
@@ -788,25 +795,29 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
 
                   {nodeEnvVariables.map( (item: any, i: any) => {
                     return (
-                    <>
-                      { i>0 &&
-                        <><hr style={{ width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 }} /></>
-                      }
-                      <PopupSubtitle>Variable {i+1}</PopupSubtitle>
-                      <InputBox>
-                        <label>Key</label>
-                        <Input onChange={(value) => this.handleEnvKey(value, i)} value={item.key} type="text" />
-                      </InputBox>
-                      <InputBox>
-                        <label>Value</label>
-                        <Input onChange={(value) => this.handleEnvValue(value, i)} value={item.value} type="text" />
-                      </InputBox>
-                      <Button onClick={() => this.removeVariable(i)} type="remove">Remove Variable</Button>
-                    </>
-                    )
-                  })}
+                      <>
+                        { i>0 &&
+                          <><hr style={{ width: "90%", color: "#88A5BF", backgroundColor: "#88A5BF", border: 0, height: 1 }} /></>
+                        }
+                        <PopupSubtitle>Variable {i+1}</PopupSubtitle>
+                        <InputBox>
+                          <label>Key</label>
+                          <Input onChange={(value) => this.handleEnvKey(value, i)} value={item.key} type="text" />
+                        </InputBox>
+                        <InputBox>
+                          <label>Value</label>
+                          <Input onChange={(value) => this.handleEnvValue(value, i)} value={item.value} type="text" />
+                        </InputBox>
+                        <Button onClick={() => this.removeVariable(i)} type="remove"><RemoveIcon/>Remove Variable</Button>
+                      </>
+                      )
+                    })
+                  }
+                  {this.state.errors.envVariables!=="" &&
+                    <ErrorLabel style={{paddingLeft: "15px"}}>{this.state.errors.envVariables}</ErrorLabel>
+                  }
 
-                  <Button onClick={this.handleAddEnvVariable} type="secondary">Add Variable</Button>
+                  <Button onClick={this.handleAddEnvVariable} type="secondary">Add variable</Button>
                 </>
               }
             </div>

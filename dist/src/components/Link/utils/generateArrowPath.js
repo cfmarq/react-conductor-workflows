@@ -7,16 +7,16 @@ var generateArrowPath = function (startPos, endPos) {
         return "";
     }
     if (endPos.portType === "top") {
-        return "M " + endPos.x + " " + endPos.y + " L " + (endPos.x - 10) + " " + (endPos.y - 20) + " L " + (endPos.x + 10) + " " + (endPos.y - 20) + " Z";
+        return "M " + endPos.x + " " + (endPos.y - 5) + " L " + (endPos.x - 7) + " " + (endPos.y - 15) + " L " + (endPos.x + 7) + " " + (endPos.y - 15) + " Z";
     }
     if (endPos.portType === "right") {
-        return "M " + endPos.x + " " + endPos.y + " L " + (endPos.x + 20) + " " + (endPos.y - 10) + " L " + (endPos.x + 20) + " " + (endPos.y + 10) + " Z";
+        return "M " + endPos.x + " " + (endPos.y - 5) + " L " + (endPos.x + 15) + " " + (endPos.y - 7) + " L " + (endPos.x + 15) + " " + (endPos.y + 7) + " Z";
     }
     if (endPos.portType === "bottom") {
-        return "M " + endPos.x + " " + endPos.y + " L " + (endPos.x - 10) + " " + (endPos.y + 20) + " L " + (endPos.x + 10) + " " + (endPos.y + 20) + " Z";
+        return "M " + endPos.x + " " + (endPos.y - 5) + " L " + (endPos.x - 7) + " " + (endPos.y + 15) + " L " + (endPos.x + 7) + " " + (endPos.y + 15) + " Z";
     }
     if (endPos.portType === "left") {
-        return "M " + endPos.x + " " + endPos.y + " L " + (endPos.x - 20) + " " + (endPos.y - 10) + " L " + (endPos.x - 20) + " " + (endPos.y + 10) + " Z";
+        return "M " + endPos.x + " " + (endPos.y - 5) + " L " + (endPos.x - 15) + " " + (endPos.y - 7) + " L " + (endPos.x - 15) + " " + (endPos.y + 7) + " Z";
     }
     return "";
 };

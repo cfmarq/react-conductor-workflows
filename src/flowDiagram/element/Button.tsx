@@ -32,7 +32,7 @@ const CustomButton = styled.button`
       font-size: 14px;
       font-weight: 400;
       padding: 2px;
-      display: block;
+      display: flex;
       margin-left: 15px;
       margin-bottom: 15px;
 
@@ -64,7 +64,7 @@ const CustomButton = styled.button`
 `
 
 export interface IButtonProps {
-    children?: string
+    children?: any
     type?: string
     onClick: (e: any) => void
 }

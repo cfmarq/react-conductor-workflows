@@ -61,15 +61,16 @@ var PopupHeader = styled_components_1.default.div(templateObject_3 || (templateO
 var PopupSubHeader = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding: 10px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 10px 15px 0px 15px;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 22px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var PopupSubtitle = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 20px 10px 0px 15px;\n  font-size: 14px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"], ["\n  padding: 20px 10px 0px 15px;\n  font-size: 14px;\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n"])));
 var ButtonBox = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"], ["\n  width: 100px;\n  display: flex;\n  justify-content: flex-start;\n  width: 100%;\n  padding-right: 1rem;\n  text-align: center;\n  margin-right: 40px;\n  margin-bottom: 20px;\n  margin-top: 40px;\n  cursor: pointer;\n"])));
-var InputBox = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"], ["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"])));
-var Input = styled_components_1.default.input(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
-var Label = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
-var ErrorLabel = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  color: #d63831;\n  font-size: 12px;\n"], ["\n  color: #d63831;\n  font-size: 12px;\n"])));
-var LabelContent = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
-var PortDefaultOuter = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"], ["\n  width: 15px;\n  height: 15px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 15px;\n    height: 15px;\n  }\n"])));
-var ProcessQueue = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var SimpleTask = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
-var SystemTask = styled_components_1.default.div(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"
+var RemoveIcon = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-image : url(/public/remove.svg);\n  background-size: cover;\n  display: inline-block;\n  margin-right: 10px;\n  height: 20px;\n  width: 20px;\n  top: 5px;\n"], ["\n  background-image : url(/public/remove.svg);\n  background-size: cover;\n  display: inline-block;\n  margin-right: 10px;\n  height: 20px;\n  width: 20px;\n  top: 5px;\n"])));
+var InputBox = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"], ["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"])));
+var Input = styled_components_1.default.input(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
+var Label = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
+var ErrorLabel = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  color: #d63831;\n  font-size: 12px;\n"], ["\n  color: #d63831;\n  font-size: 12px;\n"])));
+var LabelContent = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
+var PortDefaultOuter = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 10px;\n  height: 10px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 10px;\n    height: 10px;\n  }\n"], ["\n  width: 10px;\n  height: 10px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 10px;\n    height: 10px;\n  }\n"])));
+var ProcessQueue = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SimpleTask = styled_components_1.default.div(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 4px;\n  color: white;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
+var SystemTask = styled_components_1.default.div(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 120px;\n  height: 60px;\n  position: absolute;\n  padding: 15px;\n  font-size: 14px;\n  background: #417FA6;\n  border-radius: 50%;\n  color: white;\n  background: rgb(155, 127, 105);\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"
     // const SystemTask = styled.div`
     //   position: absolute;
     //   height: 100px;
@@ -119,8 +120,8 @@ var SystemTask = styled_components_1.default.div(templateObject_15 || (templateO
 //   }
 // }
 // `
-var StartPoint = styled_components_1.default.div(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
-var EndPoint = styled_components_1.default.div(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
+var StartPoint = styled_components_1.default.div(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(148, 80, 81);\n  color: white;\n  border-radius: 50%;\n"])));
+var EndPoint = styled_components_1.default.div(templateObject_18 || (templateObject_18 = __makeTemplateObject(["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"], ["\n  position: absolute;\n  width: 100px;\n  height: 100px;\n  padding: 0px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: rgb(110, 97, 107);\n  color: white;\n  border-radius: 50%;\n"])));
 var NodeCustom = React.forwardRef(function (_a, ref) {
     var node = _a.node, children = _a.children, otherProps = __rest(_a, ["node", "children"]);
     switch (node.type) {
@@ -282,7 +283,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     name: "",
                     taskReferenceName: "",
                     inputParameters: "",
-                    typeOption: ""
+                    typeOption: "",
+                    envVariables: ""
                 }
             });
         };
@@ -293,10 +295,16 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 name: "",
                 taskReferenceName: "",
                 inputParameters: "",
-                typeOption: ""
+                typeOption: "",
+                envVariables: ""
             };
             if (_this.state.nodeName.trim() === "") {
                 errors.name = "Name field is required";
+                _this.setState({ errors: errors });
+                gotErrors = true;
+            }
+            if (!(/^[a-z0-9-]+$/i).test(_this.state.nodeTaskReferenceName)) {
+                errors.taskReferenceName = "Task reference name field only accepts values containing alphanumeric elements and '-'";
                 _this.setState({ errors: errors });
                 gotErrors = true;
             }
@@ -310,34 +318,23 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 _this.setState({ errors: errors });
                 gotErrors = true;
             }
-            // if (this.state.nodeInputParameters.trim() === "") {
-            //   errors.inputParameters = "Input parameters field is required";
-            //   this.setState({errors: errors})
-            //   gotErrors = true
-            // }
-            try {
-                JSON.parse(_this.state.nodeInputParameters);
+            if (_this.state.nodeInputParameters.trim() !== "") {
+                try {
+                    JSON.parse(_this.state.nodeInputParameters);
+                }
+                catch (e) {
+                    errors.inputParameters = "Input parameters field should receive a valid JSON";
+                    _this.setState({ errors: errors });
+                    gotErrors = true;
+                }
             }
-            catch (e) {
-                errors.inputParameters = "Input parameters field should receive a valid JSON";
+            if (_this.state.nodeEnvVariables[0] === undefined || _this.state.nodeEnvVariables[0].trim() === "") {
+                errors.envVariables = "Environment variables field is required";
                 _this.setState({ errors: errors });
                 gotErrors = true;
             }
             if (gotErrors)
                 return false;
-            //
-            // if (this.state.nodeTypeOption === "DECISION") {
-            //   if (this.state.nodeCaseValueParam.trim() === "") {
-            //     this.warningMessage("Case value param field is required")
-            //     return false
-            //   }
-            // }
-            // if (this.state.nodeTypeOption === "EXCLUSIVE_JOIN") {
-            //   if (this.state.nodeDefaultExclusiveJoinTask.trim() === "") {
-            //     this.warningMessage("Default exclusive join task field is required")
-            //     return false
-            //   }
-            // }
             var _nodes = _this.state.nodes;
             var _nodeId = _this.state.modelOption === "addNode" ? _this.state.newNodeId : _this.state.clickNodeId;
             _nodes[_nodeId].properties = {
@@ -496,9 +493,13 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                             React.createElement(InputBox, null,
                                                 React.createElement("label", null, "Value"),
                                                 React.createElement(Input, { onChange: function (value) { return _this.handleEnvValue(value, i); }, value: item.value, type: "text" })),
-                                            React.createElement(element_1.Button, { onClick: function () { return _this.removeVariable(i); }, type: "remove" }, "Remove Variable")));
+                                            React.createElement(element_1.Button, { onClick: function () { return _this.removeVariable(i); }, type: "remove" },
+                                                React.createElement(RemoveIcon, null),
+                                                "Remove Variable")));
                                     }),
-                                    React.createElement(element_1.Button, { onClick: _this.handleAddEnvVariable, type: "secondary" }, "Add Variable"))),
+                                    _this.state.errors.envVariables !== "" &&
+                                        React.createElement(ErrorLabel, { style: { paddingLeft: "15px" } }, _this.state.errors.envVariables),
+                                    React.createElement(element_1.Button, { onClick: _this.handleAddEnvVariable, type: "secondary" }, "Add variable"))),
                         React.createElement(ButtonBox, null,
                             React.createElement(element_1.Button, { onClick: _this.setNodeInfo, type: "primary" }, "Confirm"),
                             React.createElement(element_1.Button, { onClick: _this.handleCancelEditNode, type: "cancel" }, "Cancel"))))));
@@ -536,7 +537,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 name: "",
                 taskReferenceName: "",
                 inputParameters: "",
-                typeOption: ""
+                typeOption: "",
+                envVariables: ""
             } });
         return _this;
     }
@@ -620,5 +622,5 @@ var FlowChartWithState = /** @class */ (function (_super) {
     return FlowChartWithState;
 }(React.Component));
 exports.FlowChartWithState = FlowChartWithState;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17, templateObject_18;
 //# sourceMappingURL=FlowChartWithState.js.map
