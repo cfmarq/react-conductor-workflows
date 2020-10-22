@@ -588,7 +588,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         gotErrors = true;
       }
     }
-    if (this.state.nodeEnvVariables[0] === undefined || this.state.nodeEnvVariables[0].trim() === "") {
+    if (this.state.nodeEnvVariables[0] === undefined || this.state.nodeEnvVariables[0] === "") {
       errors.envVariables = "Environment variables field is required";
       this.setState({errors: errors})
       gotErrors = true
@@ -748,10 +748,12 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   <ErrorLabel>{this.state.errors.taskReferenceName}</ErrorLabel>
                 }
               </InputBox>
+              {console.log(this.state.errors.typeOption)
+              }
               <InputBox>
                   <label>Type</label>
                   <Select
-                    style={this.state.errors.typeOption!==""?{border: '1px solid #d63831'}:{}}
+                    style={this.state.errors.typeOption!==""?{border: '1px solid #d63831 !important'}:{}}
                     optionList={ options }
                     value={this.state.nodeTypeOption!==""?this.state.nodeTypeOption:""}
                     onChange={this.handleNodeTypeChange} >

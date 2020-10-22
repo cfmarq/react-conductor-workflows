@@ -328,7 +328,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     gotErrors = true;
                 }
             }
-            if (_this.state.nodeEnvVariables[0] === undefined || _this.state.nodeEnvVariables[0].trim() === "") {
+            if (_this.state.nodeEnvVariables[0] === undefined || _this.state.nodeEnvVariables[0] === "") {
                 errors.envVariables = "Environment variables field is required";
                 _this.setState({ errors: errors });
                 gotErrors = true;
@@ -456,9 +456,10 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                 React.createElement(Input, { style: _this.state.errors.taskReferenceName !== "" ? { border: '1px solid #d63831' } : {}, onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" }),
                                 _this.state.errors.taskReferenceName !== "" &&
                                     React.createElement(ErrorLabel, null, _this.state.errors.taskReferenceName)),
+                            console.log(_this.state.errors.typeOption),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Type"),
-                                React.createElement(element_1.Select, { style: _this.state.errors.typeOption !== "" ? { border: '1px solid #d63831' } : {}, optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange }),
+                                React.createElement(element_1.Select, { style: _this.state.errors.typeOption !== "" ? { border: '1px solid #d63831 !important' } : {}, optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange }),
                                 _this.state.errors.typeOption !== "" &&
                                     React.createElement(ErrorLabel, null, _this.state.errors.typeOption)),
                             React.createElement(InputBox, null,
