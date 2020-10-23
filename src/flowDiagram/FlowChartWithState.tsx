@@ -156,6 +156,7 @@ const Label = styled.div`
 const ErrorLabel = styled.div`
   color: #d63831;
   font-size: 12px;
+  padding-top: 5px;
 `
 
 const LabelContent = styled.div`
@@ -394,7 +395,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         taskReferenceName: "",
         inputParameters: "",
         typeOption: "",
-        envVariables: ""
+        envVariables: "",
+        envVariablesKey: "",
+        envVariablesValue: ""
       }
     }
 
@@ -541,7 +544,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         taskReferenceName: "",
         inputParameters: "",
         typeOption: "",
-        envVariables: ""
+        envVariables: "",
+        envVariablesKey: "",
+        envVariablesValue: ""
       }
     })
   }
@@ -555,7 +560,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       taskReferenceName: "",
       inputParameters: "",
       typeOption: "",
-      envVariables: ""
+      envVariables: "",
+      envVariablesKey: "",
+      envVariablesValue: ""
     };
 
     if (this.state.nodeName.trim() === "") {
@@ -565,7 +572,7 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     }
 
     if (!(/^[a-z0-9-]+$/i).test(this.state.nodeTaskReferenceName)) {
-      errors.taskReferenceName = "Task reference name field only accepts values containing alphanumeric elements and '-'";
+      errors.taskReferenceName = "Task reference name field accepts alphanumeric and '-' charaters";
       this.setState({errors: errors})
       gotErrors = true
     }
@@ -588,11 +595,25 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
         gotErrors = true;
       }
     }
-    if (this.state.nodeEnvVariables[0] === undefined || this.state.nodeEnvVariables[0] === "") {
-      errors.envVariables = "Environment variables field is required";
-      this.setState({errors: errors})
-      gotErrors = true
+
+    if(this.state.nodeSchema === 'simple-task') {
+      if (this.state.nodeEnvVariables[0] === undefined) {
+        errors.envVariables = "Environment variables field is required";
+        this.setState({errors: errors})
+        gotErrors = true
+      }
+      if (this.state.nodeEnvVariables[0] !== undefined && this.state.nodeEnvVariables[0].key === "") {
+        errors.envVariablesKey = "Environment variable key is required";
+        this.setState({errors: errors})
+        gotErrors = true
+      }
+      if (this.state.nodeEnvVariables[0] !== undefined && this.state.nodeEnvVariables[0].value === "") {
+        errors.envVariablesValue = "Environment variable value is required";
+        this.setState({errors: errors})
+        gotErrors = true
+      }
     }
+
 
     if (gotErrors)
       return false;
@@ -748,8 +769,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   <ErrorLabel>{this.state.errors.taskReferenceName}</ErrorLabel>
                 }
               </InputBox>
-              {console.log(this.state.errors.typeOption)
-              }
               <InputBox>
                   <label>Type</label>
                   <Select
@@ -794,7 +813,6 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                   <PopupSubHeader>
                     Environment variables
                   </PopupSubHeader>
-
                   {nodeEnvVariables.map( (item: any, i: any) => {
                     return (
                       <>
@@ -805,10 +823,16 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                         <InputBox>
                           <label>Key</label>
                           <Input onChange={(value) => this.handleEnvKey(value, i)} value={item.key} type="text" />
+                          {this.state.errors.envVariablesKey!=="" &&
+                            <ErrorLabel>{this.state.errors.envVariablesKey}</ErrorLabel>
+                          }
                         </InputBox>
                         <InputBox>
                           <label>Value</label>
                           <Input onChange={(value) => this.handleEnvValue(value, i)} value={item.value} type="text" />
+                          {this.state.errors.envVariablesValue!=="" &&
+                            <ErrorLabel>{this.state.errors.envVariablesValue}</ErrorLabel>
+                          }
                         </InputBox>
                         <Button onClick={() => this.removeVariable(i)} type="remove"><RemoveIcon/>Remove Variable</Button>
                       </>

@@ -65,7 +65,7 @@ var RemoveIcon = styled_components_1.default.div(templateObject_7 || (templateOb
 var InputBox = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"], ["\n  font-size: 20px;\n  margin: 20px 0 30px 0;\n  padding: 0 1rem;\n\n  & label {\n    display:block;\n    color: #88a5bf\n    font-size: 12px;\n    padding-bottom: 2px;\n  }\n\n  & input {\n    font-size: 14px;\n    display:block;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n\n  & textarea {\n    font-size: 14px;\n    padding: 10px;\n    height: 100px;\n    width: 300px;\n    padding-left: 0.5rem;\n    border: 1px solid #88A5BF;\n    border-radius: 8px;\n    &:focus {\n      outline: none;\n      box-shadow: 0 0 1px 1px #244e74;\n    }\n  }\n"])));
 var Input = styled_components_1.default.input(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"], ["\n  padding: 10px;\n  height: 40px;\n  border: 1px solid #88A5BF;\n  border-radius: 8px;\n  width: 100%;\n"])));
 var Label = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n  position: absolute;\n  width: 80px;\n"], ["\n  position: absolute;\n  width: 80px;\n"])));
-var ErrorLabel = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  color: #d63831;\n  font-size: 12px;\n"], ["\n  color: #d63831;\n  font-size: 12px;\n"])));
+var ErrorLabel = styled_components_1.default.div(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n  color: #d63831;\n  font-size: 12px;\n  padding-top: 5px;\n"], ["\n  color: #d63831;\n  font-size: 12px;\n  padding-top: 5px;\n"])));
 var LabelContent = styled_components_1.default.div(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"], ["\n  padding: 5px 10px;\n  background: #88A5BF;\n  color: white;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  cursor: pointer;\n"])));
 var PortDefaultOuter = styled_components_1.default.div(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n  width: 10px;\n  height: 10px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 10px;\n    height: 10px;\n  }\n"], ["\n  width: 10px;\n  height: 10px;\n  border-radius: 20px;\n  background: #88A5BF;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  &:hover {\n    background: #88A5BF;\n  }\n  & svg {\n    width: 10px;\n    height: 10px;\n  }\n"])));
 var ProcessQueue = styled_components_1.default.div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"], ["\n  width: 200px;\n  height: 120px;\n  position: absolute;\n  padding: 30px;\n  background: rgb(217, 207, 138);\n  color: white;\n  border-radius: 10px;\n  & div {\n    padding: 0px;\n    margin: 0px;\n  }\n"])));
@@ -284,7 +284,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     taskReferenceName: "",
                     inputParameters: "",
                     typeOption: "",
-                    envVariables: ""
+                    envVariables: "",
+                    envVariablesKey: "",
+                    envVariablesValue: ""
                 }
             });
         };
@@ -296,7 +298,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 taskReferenceName: "",
                 inputParameters: "",
                 typeOption: "",
-                envVariables: ""
+                envVariables: "",
+                envVariablesKey: "",
+                envVariablesValue: ""
             };
             if (_this.state.nodeName.trim() === "") {
                 errors.name = "Name field is required";
@@ -304,7 +308,7 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 gotErrors = true;
             }
             if (!(/^[a-z0-9-]+$/i).test(_this.state.nodeTaskReferenceName)) {
-                errors.taskReferenceName = "Task reference name field only accepts values containing alphanumeric elements and '-'";
+                errors.taskReferenceName = "Task reference name field accepts alphanumeric and '-' charaters";
                 _this.setState({ errors: errors });
                 gotErrors = true;
             }
@@ -328,10 +332,22 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     gotErrors = true;
                 }
             }
-            if (_this.state.nodeEnvVariables[0] === undefined || _this.state.nodeEnvVariables[0] === "") {
-                errors.envVariables = "Environment variables field is required";
-                _this.setState({ errors: errors });
-                gotErrors = true;
+            if (_this.state.nodeSchema === 'simple-task') {
+                if (_this.state.nodeEnvVariables[0] === undefined) {
+                    errors.envVariables = "Environment variables field is required";
+                    _this.setState({ errors: errors });
+                    gotErrors = true;
+                }
+                if (_this.state.nodeEnvVariables[0] !== undefined && _this.state.nodeEnvVariables[0].key === "") {
+                    errors.envVariablesKey = "Environment variable key is required";
+                    _this.setState({ errors: errors });
+                    gotErrors = true;
+                }
+                if (_this.state.nodeEnvVariables[0] !== undefined && _this.state.nodeEnvVariables[0].value === "") {
+                    errors.envVariablesValue = "Environment variable value is required";
+                    _this.setState({ errors: errors });
+                    gotErrors = true;
+                }
             }
             if (gotErrors)
                 return false;
@@ -456,7 +472,6 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                 React.createElement(Input, { style: _this.state.errors.taskReferenceName !== "" ? { border: '1px solid #d63831' } : {}, onChange: _this.handleTaskReferenceNameInput, value: _this.state.nodeTaskReferenceName, type: "text" }),
                                 _this.state.errors.taskReferenceName !== "" &&
                                     React.createElement(ErrorLabel, null, _this.state.errors.taskReferenceName)),
-                            console.log(_this.state.errors.typeOption),
                             React.createElement(InputBox, null,
                                 React.createElement("label", null, "Type"),
                                 React.createElement(element_1.Select, { style: _this.state.errors.typeOption !== "" ? { border: '1px solid #d63831 !important' } : {}, optionList: options, value: _this.state.nodeTypeOption !== "" ? _this.state.nodeTypeOption : "", onChange: _this.handleNodeTypeChange }),
@@ -490,10 +505,14 @@ var FlowChartWithState = /** @class */ (function (_super) {
                                                 i + 1),
                                             React.createElement(InputBox, null,
                                                 React.createElement("label", null, "Key"),
-                                                React.createElement(Input, { onChange: function (value) { return _this.handleEnvKey(value, i); }, value: item.key, type: "text" })),
+                                                React.createElement(Input, { onChange: function (value) { return _this.handleEnvKey(value, i); }, value: item.key, type: "text" }),
+                                                _this.state.errors.envVariablesKey !== "" &&
+                                                    React.createElement(ErrorLabel, null, _this.state.errors.envVariablesKey)),
                                             React.createElement(InputBox, null,
                                                 React.createElement("label", null, "Value"),
-                                                React.createElement(Input, { onChange: function (value) { return _this.handleEnvValue(value, i); }, value: item.value, type: "text" })),
+                                                React.createElement(Input, { onChange: function (value) { return _this.handleEnvValue(value, i); }, value: item.value, type: "text" }),
+                                                _this.state.errors.envVariablesValue !== "" &&
+                                                    React.createElement(ErrorLabel, null, _this.state.errors.envVariablesValue)),
                                             React.createElement(element_1.Button, { onClick: function () { return _this.removeVariable(i); }, type: "remove" },
                                                 React.createElement(RemoveIcon, null),
                                                 "Remove Variable")));
@@ -539,7 +558,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
                 taskReferenceName: "",
                 inputParameters: "",
                 typeOption: "",
-                envVariables: ""
+                envVariables: "",
+                envVariablesKey: "",
+                envVariablesValue: ""
             } });
         return _this;
     }
