@@ -596,7 +596,9 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
       }
     }
 
-    if(this.state.nodeSchema === 'simple-task') {
+    const validationSource = this.state.nodeSchema !== ""?this.state.nodeSchema:Object.values(this.state.nodes)[Object.values(this.state.nodes).length - 1].type;
+
+    if(validationSource === 'simple-task') {
       if (this.state.nodeEnvVariables[0] === undefined) {
         errors.envVariables = "Environment variables field is required";
         this.setState({errors: errors})
@@ -745,11 +747,15 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
                 <InputBox>
                   <label>Name</label>
                   <Select
+                    style={this.state.errors.typeOption!==""?{border: '1px solid #d63831 !important'}:{}}
                     optionList={ tasks }
                     value={this.state.nodeName!==""?this.state.nodeName:""}
                     onChange={this.handleNodeNameChange}
                     >
                   </Select>
+                  {this.state.errors.name!=="" &&
+                    <ErrorLabel>{this.state.errors.name}</ErrorLabel>
+                  }
                 </InputBox>
               }
               {type === "system-task" &&
@@ -863,17 +869,20 @@ export class FlowChartWithState extends React.Component<IFlowChartWithStateProps
     }
     return (
       <ModelBox className={this.state.isModelShow ? "" : "hide"}>
-        <ModelContent>
-          <div className="InputBox">
-            <InputBox>
-              <label>Name:</label>
-              <Input onChange={this.handleLinkDescriptionInput} value={this.state.linkLabel} type="text" />
-            </InputBox>
-          </div>
-          <ButtonBox>
-            <Button onClick={this.setLinkInfo} type="primary">Confirm</Button>
-            <Button onClick={this.hideModel} type="cancel">Cancel</Button>
-          </ButtonBox>
+          <ModelContent>
+            <PopupHeader>
+              <>Label</>
+            </PopupHeader>
+            <div className="InputBox">
+              <InputBox>
+                <label>Label:</label>
+                <Input onChange={this.handleLinkDescriptionInput} value={this.state.linkLabel} type="text" />
+              </InputBox>
+            </div>
+            <ButtonBox>
+              <Button onClick={this.setLinkInfo} type="primary">Confirm</Button>
+              <Button onClick={this.hideModel} type="cancel">Cancel</Button>
+            </ButtonBox>
         </ModelContent>
       </ModelBox>
     )

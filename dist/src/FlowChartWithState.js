@@ -332,7 +332,8 @@ var FlowChartWithState = /** @class */ (function (_super) {
                     gotErrors = true;
                 }
             }
-            if (_this.state.nodeSchema === 'simple-task') {
+            var validationSource = _this.state.nodeSchema !== "" ? _this.state.nodeSchema : Object.values(_this.state.nodes)[Object.values(_this.state.nodes).length - 1].type;
+            if (validationSource === 'simple-task') {
                 if (_this.state.nodeEnvVariables[0] === undefined) {
                     errors.envVariables = "Environment variables field is required";
                     _this.setState({ errors: errors });
@@ -460,7 +461,9 @@ var FlowChartWithState = /** @class */ (function (_super) {
                             type === "simple-task" &&
                                 React.createElement(InputBox, null,
                                     React.createElement("label", null, "Name"),
-                                    React.createElement(element_1.Select, { optionList: tasks, value: _this.state.nodeName !== "" ? _this.state.nodeName : "", onChange: _this.handleNodeNameChange })),
+                                    React.createElement(element_1.Select, { style: _this.state.errors.typeOption !== "" ? { border: '1px solid #d63831 !important' } : {}, optionList: tasks, value: _this.state.nodeName !== "" ? _this.state.nodeName : "", onChange: _this.handleNodeNameChange }),
+                                    _this.state.errors.name !== "" &&
+                                        React.createElement(ErrorLabel, null, _this.state.errors.name)),
                             type === "system-task" &&
                                 React.createElement(InputBox, null,
                                     React.createElement("label", null, "Name"),
@@ -530,9 +533,11 @@ var FlowChartWithState = /** @class */ (function (_super) {
             }
             return (React.createElement(ModelBox, { className: _this.state.isModelShow ? "" : "hide" },
                 React.createElement(ModelContent, null,
+                    React.createElement(PopupHeader, null,
+                        React.createElement(React.Fragment, null, "Label")),
                     React.createElement("div", { className: "InputBox" },
                         React.createElement(InputBox, null,
-                            React.createElement("label", null, "Name:"),
+                            React.createElement("label", null, "Label:"),
                             React.createElement(Input, { onChange: _this.handleLinkDescriptionInput, value: _this.state.linkLabel, type: "text" }))),
                     React.createElement(ButtonBox, null,
                         React.createElement(element_1.Button, { onClick: _this.setLinkInfo, type: "primary" }, "Confirm"),
